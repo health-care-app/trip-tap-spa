@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,7 +14,24 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@AppStore": ["app/app.store"],
+      "@Auth/*": ["app/core/auth/*"],
+      "@Components/*": ["app/shared/components/*"],
+      "@Consts/*": ["app/shared/consts/*"],
+      "@Environment": ["environments/environment"],
+      "@Form/*": ["app/core/form/*"],
+      "@Helpers/*": ["app/core/helpers/*"],
+      "@Interceptors/*": ["app/shared/interceptors/*"],
+      "@Mocks/*": ["app/shared/mocks/*"],
+      "@Models/*": ["app/shared/models/*"],
+      "@Modules/*": ["app/modules/*"],
+      "@Pipes/*": ["app/shared/pipes/*"],
+      "@Specs/*": ["app/spec/*"],
+      "@Guards/*": ["app/core/guards/*"],
+      "@Utils/*": ["app/core/utils/*"],
+    },
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
