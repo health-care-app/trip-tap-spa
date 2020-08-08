@@ -41,6 +41,13 @@ yarn-error.log
 testem.log
 /typings
 
+# Cordova
+cordova/node_modules/
+cordova/platforms/
+cordova/plugins
+cordova/www/
+UserInterfaceState.xcuserstate
+
 # System Files
 .DS_Store
 Thumbs.db
