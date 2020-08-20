@@ -1,0 +1,55 @@
+@import '_core';
+
+:host {
+  display: block;
+  width: 100%;
+
+  @media screen and (min-width: $md) {
+    width: 50%;
+  }
+
+  &.width-100 {
+    width: 100%;
+  }
+
+  &.inline {
+    display: inline-block;
+  }
+
+  &.inline-form {
+    display: contents;
+
+    &.trash-icon {
+      .form-item {
+        margin: auto;
+        width: fit-content;
+      }
+    }
+
+    .form-item {
+      padding: 10px;
+    }
+  }
+
+  &.reactive-form-field {
+    @media screen and (min-width: $md) {
+      width: 50%;
+    }
+
+    width: 100%;
+
+    .popup-form & {
+      width: 100%;
+    }
+  }
+
+  .form-item {
+    width: 100%;
+  }
+}
+
+.form-item {
+  .cancellation-fee :host & {
+    padding: 0;
+  }
+}

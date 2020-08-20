@@ -104,12 +104,14 @@
         "@AppStore",
         "@Components",
         "@Consts",
+        "@Enums",
         "@Environment",
         "@Interfaces",
         "@Modules",
         "@Pipes",
         "@SharedModule",
-        "@Models"
+        "@Models",
+        "@Specs"
       ]
     ],
     "no-inferred-empty-object-type": true,
@@ -137,10 +139,13 @@
       "primeng",
       "@Components",
       "@Consts",
+      "@Enums",
       "@Environment",
       "@Modules",
       "@Pipes",
-      "@SharedModule"
+      "@SharedModule",
+      "@Models",
+      "@Specs"
     ],
     "no-switch-case-fall-through": true,
     "no-tautology-expression": true,
@@ -257,7 +262,7 @@
         "groups": [
           {
             "name": "External resources",
-            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor))",
+            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor|ng-mocks))",
             "order": 10
           },
           {
