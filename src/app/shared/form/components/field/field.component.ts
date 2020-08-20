@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'trip-reactive-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReactiveFieldComponent {
   @Input() public translationPath: string;

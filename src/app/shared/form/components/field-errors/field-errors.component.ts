@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { FieldErrors } from '../../enums/field-errors.enum';
@@ -7,6 +7,7 @@ import { FieldErrors } from '../../enums/field-errors.enum';
   selector: 'trip-field-errors',
   templateUrl: './field-errors.component.html',
   styleUrls: ['./field-errors.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldErrorsComponent {
   public get fieldControl(): AbstractControl {
