@@ -6,14 +6,14 @@ import { MockComponent } from 'ng-mocks';
 import { TranslateTestingModule } from '@Specs/translate.spec';
 
 import { FieldErrorsComponent } from '../field-errors/field-errors.component';
-import { ReactiveFieldComponent } from './field.component';
+import { FieldComponent } from './field.component';
 
-describe('ReactiveFieldComponent', (): void => {
-  let component: ReactiveFieldComponent;
-  let fixture: ComponentFixture<ReactiveFieldComponent>;
+describe('FieldComponent', (): void => {
+  let component: FieldComponent;
+  let fixture: ComponentFixture<FieldComponent>;
 
   const initializeTestingComponent: (isVisible: boolean, fieldClass?: string) => void = (isVisible: boolean, fieldClass: string): void => {
-    fixture = TestBed.createComponent(ReactiveFieldComponent);
+    fixture = TestBed.createComponent(FieldComponent);
     component = fixture.componentInstance;
     component.isVisible = isVisible;
     component.fieldClass = fieldClass;
@@ -27,7 +27,7 @@ describe('ReactiveFieldComponent', (): void => {
         TranslateTestingModule,
       ],
       declarations: [
-        ReactiveFieldComponent,
+        FieldComponent,
         MockComponent(FieldErrorsComponent),
       ],
     })

@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReactiveFieldComponent {
+export class FieldComponent {
   @Input() public translationPath: string;
   @Input() public isVisible: boolean = true;
   @Input() public fieldClass: string = 'form-input';
