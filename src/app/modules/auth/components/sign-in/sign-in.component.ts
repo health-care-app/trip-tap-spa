@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SignInCredentials } from '@Auth/shared/models/sign-in.model';
 import { AuthFacade } from '@Auth/store/auth.facade';
+import { REGEX } from '@Consts/regex.const';
 import { FieldsNames } from '@Form/enums/field-names.enum';
 
 @Component({
@@ -33,7 +34,7 @@ export class SignInComponent implements OnInit {
   private createSignInForm(): FormGroup {
     return this.formBuilder.group({
       [FieldsNames.Email]: [ '', [ Validators.required, Validators.email ] ],
-      [FieldsNames.Password]: [ '', [ Validators.required, Validators.pattern(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/) ] ],
+      [FieldsNames.Password]: [ '', [ Validators.required, Validators.pattern(REGEX.password) ] ],
     });
   }
 }
