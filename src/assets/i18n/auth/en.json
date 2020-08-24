@@ -1,0 +1,8 @@
+{
+  "AUTH": {
+    "FIELDS": {
+      "EMAIL": "Email Address",
+      "PASSWORD": "Password"
+    }
+  }
+}

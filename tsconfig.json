@@ -33,6 +33,7 @@
       "@Specs/*": ["app/specs/*"],
       "@Guards/*": ["app/core/guards/*"],
       "@Utils/*": ["app/core/utils/*"],
+      "@Auth/*": ["app/modules/auth/*"]
     },
   },
   "angularCompilerOptions": {

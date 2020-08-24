@@ -1,0 +1,40 @@
+<form
+  [formGroup]="signInForm"
+  (submit)="signIn(signInForm.value)"
+>
+  <trip-reactive-field
+    translationPath="AUTH.FIELDS"
+    label="EMAIL"
+    [labelFor]="FieldsNames.Email"
+    [formGroup]="signInForm"
+  >
+    <input
+      pInputText
+      [id]="FieldsNames.Email"
+      class="form-field__input"
+      type="text"
+      [formControlName]="FieldsNames.Email"
+    >
+  </trip-reactive-field>
+
+  <trip-reactive-field
+    translationPath="AUTH.FIELDS"
+    label="PASSWORD"
+    [labelFor]="FieldsNames.Password"
+    [formGroup]="signInForm"
+  >
+    <input
+      pInputText
+      [id]="FieldsNames.Password"
+      class="form-field__input"
+      type="password"
+      [formControlName]="FieldsNames.Password"
+    >
+  </trip-reactive-field>
+
+  <p-button
+    type="submit"
+    label="Click"
+    [disabled]="signInForm && signInForm.invalid"
+  ></p-button>
+</form>
