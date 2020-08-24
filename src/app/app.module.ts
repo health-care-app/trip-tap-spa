@@ -1,12 +1,16 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 import { getInitialState, REDUCER_PROVIDER, reducerToken } from '@AppStore';
+import { ToastComponent } from '@Components/toast/toast.component';
 import { ERROR_HANDLING_INTERCEPTOR } from '@Interceptors/error-handling.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,8 +20,11 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
 @NgModule({
   declarations: [
     AppComponent,
+    ToastComponent,
   ],
   imports: [
+    ToastModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -38,6 +45,7 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
   providers: [
     REDUCER_PROVIDER,
     ERROR_HANDLING_INTERCEPTOR,
+    MessageService,
   ],
   bootstrap: [ AppComponent ],
 })
