@@ -4,11 +4,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Error } from '@Models/error.model';
+import { ErrorFacade } from '@Store/error/error.facade';
 
 @Injectable()
 export class ErrorHandlingInterceptor implements HttpInterceptor {
 
-  // tslint:disable: no-any prefer-function-over-method
+  public constructor(
+    private readonly errorFacade: ErrorFacade,
+  ) {
+  }
+
+  // tslint:disable: no-any
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
       .pipe(
@@ -37,6 +43,8 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
               error: `Error Status: ${httpErrorResponse.status}\nMessage: ${httpErrorResponse.message}`,
             };
           }
+
+          this.errorFacade.catchError(error);
 
           return throwError(error);
         }),
