@@ -1,6 +1,6 @@
+// tslint:disable: max-line-length
 import { createAction, props } from '@ngrx/store';
 
-// tslint:disable: max-line-length
 import { ErrorProps } from '@Models/error-props.model';
 import { ActionCreatorPropsType, ActionCreatorType } from '@Types/action.types';
 

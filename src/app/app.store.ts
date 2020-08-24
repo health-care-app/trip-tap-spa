@@ -24,8 +24,7 @@ export const reducers: Reducers = {
 
 export const reducerToken: InjectionToken<ActionReducerMap<State>> = new InjectionToken('Registered Reducers');
 
-// tslint:disable-next-line: variable-name
-export const ReducerProvider: Provider = {
+export const REDUCER_PROVIDER: Provider = {
   provide: reducerToken,
   useFactory: getReducers,
 };
