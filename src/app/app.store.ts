@@ -1,7 +1,31 @@
-import { ActionReducerMap } from '@ngrx/store';
+import { InjectionToken, Provider } from '@angular/core';
+import { ActionReducer, ActionReducerMap, combineReducers } from '@ngrx/store';
 
-export interface State {
-}
+import { Reducers, Shared, State } from '@Models/store.model';
+import { errorInitialState, errorReducer } from '@Store/error/error.reducers';
 
-export const reducers: ActionReducerMap<State> = {
+export const initialState: State = {
+  shared: {
+    error: errorInitialState,
+  },
+};
+
+export const getReducers: () => Reducers = (): Reducers => reducers;
+
+export const getInitialState: () => State = (): State => initialState;
+
+const sharedReducers: ActionReducer<Shared> = combineReducers({
+  error: errorReducer,
+});
+
+export const reducers: Reducers = {
+  shared: sharedReducers,
+};
+
+export const reducerToken: InjectionToken<ActionReducerMap<State>> = new InjectionToken('Registered Reducers');
+
+// tslint:disable-next-line: variable-name
+export const ReducerProvider: Provider = {
+  provide: reducerToken,
+  useFactory: getReducers,
 };

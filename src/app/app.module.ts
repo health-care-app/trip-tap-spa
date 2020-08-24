@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
@@ -6,7 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { reducers } from '@AppStore';
+import { getInitialState, ReducerProvider, reducerToken } from '@AppStore';
+import { ErrorHandlingInterceptor } from '@Interceptors/error-handling.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +21,12 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot(
+      reducerToken,
+      { initialState: getInitialState },
+      ),
+    StoreDevtoolsModule.instrument({ maxAge: 30 }),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot(reducers, {
-    }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 30,
-    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -34,10 +35,15 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
       },
     }),
   ],
-  providers: [],
-  bootstrap: [
-    AppComponent,
+  providers: [
+    ReducerProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlingInterceptor,
+      multi: true,
+    },
   ],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

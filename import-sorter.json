@@ -34,7 +34,7 @@
           "orderLevel": 10
         },
         {
-          "regex": "^[@](Modules|SharedModule|Components|Consts|Enums|Models|Pipes|AppStore|Environment|Types|Interfaces|Specs)",
+          "regex": "^[@](Modules|SharedModule|Components|Consts|Enums|Models|Pipes|AppStore|Environment|Types|Interfaces|Specs|Form|Interceptors|Store)",
           "orderLevel": 20
         },
         {
