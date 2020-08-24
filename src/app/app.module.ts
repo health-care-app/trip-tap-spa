@@ -6,7 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { reducers } from '@AppStore';
+import { getInitialState, REDUCER_PROVIDER, reducerToken } from '@AppStore';
+import { ERROR_HANDLING_INTERCEPTOR } from '@Interceptors/error-handling.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +21,12 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot(
+      reducerToken,
+      { initialState: getInitialState },
+      ),
+    StoreDevtoolsModule.instrument({ maxAge: 30 }),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot(reducers, {
-    }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 30,
-    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -34,10 +35,11 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
       },
     }),
   ],
-  providers: [],
-  bootstrap: [
-    AppComponent,
+  providers: [
+    REDUCER_PROVIDER,
+    ERROR_HANDLING_INTERCEPTOR,
   ],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

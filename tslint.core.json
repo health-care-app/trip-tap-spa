@@ -111,7 +111,11 @@
         "@Pipes",
         "@SharedModule",
         "@Models",
-        "@Specs"
+        "@Specs",
+        "@Types",
+        "@Form",
+        "@Interceptors",
+        "@Store"
       ]
     ],
     "no-inferred-empty-object-type": true,
@@ -145,7 +149,11 @@
       "@Pipes",
       "@SharedModule",
       "@Models",
-      "@Specs"
+      "@Specs",
+      "@Types",
+      "@Form",
+      "@Interceptors",
+      "@Store"
     ],
     "no-switch-case-fall-through": true,
     "no-tautology-expression": true,

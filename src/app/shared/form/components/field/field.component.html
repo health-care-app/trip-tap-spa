@@ -8,14 +8,14 @@
         [for]="labelFor"
         class="form-field__label"
       >
-        {{ translationPath + label | translate }}{{ isRequired ? '*' : '' }}
+        {{ translationPath + '.' + label | translate }}{{ isRequired ? '*' : '' }}
       </label>
     </span>
 
-    <iv-field-errors
+    <trip-field-errors
       *ngIf="formGroup && label.length > 0"
       [label]="translationPath + label | translate"
       [fieldControl]="formGroup.controls[labelFor]"
-    ></iv-field-errors>
+    ></trip-field-errors>
   </div>
 </div>
