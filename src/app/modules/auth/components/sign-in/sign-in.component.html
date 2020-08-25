@@ -34,7 +34,15 @@
 
   <p-button
     type="submit"
-    label="Click"
+    [label]="'AUTH.SIGN_IN' | translate"
     [disabled]="signInForm && signInForm.invalid"
   ></p-button>
 </form>
+
+<label>
+  {{ 'AUTH.NOT_A_MEMBER' | translate }}
+
+  <a [routerLink]="[signInLink]">
+    {{ 'AUTH.SIGN_UP' | translate }}
+  </a>
+</label>

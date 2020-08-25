@@ -2,8 +2,8 @@ import { ActionReducer, createReducer, on } from '@ngrx/store';
 
 import { SetPendingActionType } from '@Types/pending-action.types';
 
-import { SignInSuccessActionType } from '../shared/types/action.types';
-import { AuthActionsTypes, setPendingState, signIn, signInSuccess } from './auth.actions';
+import { SignInSuccessActionType, SignUpSuccessActionType } from '../shared/types/action.types';
+import { AuthActionsTypes, setPendingState, signIn, signInSuccess, signUp, signUpSuccess } from './auth.actions';
 import { AuthState } from './auth.state';
 
 export const authInitialState: AuthState = {
@@ -17,12 +17,20 @@ export const authReducer: ActionReducer<AuthState> = createReducer(
     ...state,
     pending: action.isPending,
   })),
-  on(signIn, (state: AuthState): AuthState => ({
-    ...state,
-    pending: true,
-  })),
-  on(signInSuccess, (state: AuthState, action: SignInSuccessActionType): AuthState => ({
-    ...state,
-    profile: action.profile,
-  })),
+  on(
+    signIn,
+    signUp,
+    (state: AuthState): AuthState => ({
+      ...state,
+      pending: true,
+    }),
+  ),
+  on(
+    signInSuccess,
+    signUpSuccess,
+    (state: AuthState, action: SignInSuccessActionType | SignUpSuccessActionType): AuthState => ({
+      ...state,
+      profile: action.profile,
+    }),
+  ),
 );
