@@ -1,6 +1,12 @@
 {
   "AUTH": {
+    "SIGN_IN": "Sign in",
+    "SIGN_UP": "Sign up",
+    "NOT_A_MEMBER": "You’re not a member yet?",
+    "ALREADY_A_MEMBER": "You’re already a member?",
     "FIELDS": {
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
       "EMAIL": "Email Address",
       "PASSWORD": "Password"
     }

@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 
 import { Profile } from '@Auth/shared/models/profile.model';
 import { SignInCredentials } from '@Auth/shared/models/sign-in.model';
+import { SignUpCredentials } from '@Auth/shared/models/sign-up.model';
 import { State } from '@Models/store.model';
 
-import { setPendingState, signIn } from './auth.actions';
+import { setPendingState, signIn, signUp } from './auth.actions';
 import { authSelectors } from './auth.selectors';
 
 @Injectable({ providedIn: 'root' })
@@ -25,5 +26,9 @@ export class AuthFacade {
 
   public signIn(signInCredentials: SignInCredentials): void {
     this.store.dispatch(signIn({signInCredentials}));
+  }
+
+  public signUp(signUpCredentials: SignUpCredentials): void {
+    this.store.dispatch(signUp({signUpCredentials}));
   }
 }

@@ -4,4 +4,5 @@ export enum ModuleRoutes {
 
 export enum AuthRoutes {
   SignIn = 'signin',
+  SignUp = 'signup',
 }
