@@ -31,7 +31,7 @@
       "@Modules/*": ["app/modules/*"],
       "@Pipes/*": ["app/shared/pipes/*"],
       "@Specs/*": ["app/specs/*"],
-      "@Guards/*": ["app/core/guards/*"],
+      "@Guards/*": ["app/shared/guards/*"],
       "@Utils/*": ["app/core/utils/*"],
       "@Auth/*": ["app/modules/auth/*"]
     },

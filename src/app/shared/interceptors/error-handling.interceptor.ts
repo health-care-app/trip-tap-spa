@@ -52,7 +52,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
   }
 }
 
-export const ERROR_HANDLING_INTERCEPTOR: Provider = {
+export const ERROR_HANDLING_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: ErrorHandlingInterceptor,
   multi: true,

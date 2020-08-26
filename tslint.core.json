@@ -116,7 +116,8 @@
         "@Form",
         "@Interceptors",
         "@Store",
-        "@Auth"
+        "@Auth",
+        "@Guards"
       ]
     ],
     "no-inferred-empty-object-type": true,
@@ -155,7 +156,8 @@
       "@Form",
       "@Interceptors",
       "@Store",
-      "@Auth"
+      "@Auth",
+      "@Guards"
     ],
     "no-switch-case-fall-through": true,
     "no-tautology-expression": true,
@@ -272,7 +274,7 @@
         "groups": [
           {
             "name": "External resources",
-            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor|ng-mocks))",
+            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor|ng-mocks|jwt-decode))",
             "order": 10
           },
           {
