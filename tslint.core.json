@@ -272,7 +272,7 @@
         "groups": [
           {
             "name": "External resources",
-            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor|ng-mocks))",
+            "match": "^(@?(angular|ngrx|ngx|rxjs|moment|prime|protractor|ng-mocks|jwt-decode))",
             "order": 10
           },
           {

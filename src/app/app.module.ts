@@ -11,7 +11,8 @@ import { ToastModule } from 'primeng/toast';
 
 import { getInitialState, REDUCER_PROVIDER, reducerToken } from '@AppStore';
 import { ToastComponent } from '@Components/toast/toast.component';
-import { ERROR_HANDLING_INTERCEPTOR } from '@Interceptors/error-handling.interceptor';
+import { AUTH_INTERCEPTOR_PROVIDER } from '@Interceptors/auth.interceptor';
+import { ERROR_HANDLING_INTERCEPTOR_PROVIDER } from '@Interceptors/error-handling.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +32,7 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
     StoreModule.forRoot(
       reducerToken,
       { initialState: getInitialState },
-      ),
+    ),
     StoreDevtoolsModule.instrument({ maxAge: 30 }),
     EffectsModule.forRoot([]),
     TranslateModule.forRoot({
@@ -44,7 +45,8 @@ import { MultiTranslateLoader } from './shared/loaders/multi-translate.loader';
   ],
   providers: [
     REDUCER_PROVIDER,
-    ERROR_HANDLING_INTERCEPTOR,
+    AUTH_INTERCEPTOR_PROVIDER,
+    ERROR_HANDLING_INTERCEPTOR_PROVIDER,
     MessageService,
   ],
   bootstrap: [ AppComponent ],
