@@ -2,7 +2,7 @@
   width: 100%;
 
   .form-field__label {
-    color: map-get($colors, white);
+    color: map-get($colors, trip-white);
     font-size: 15px;
     left: 4px;
   }
@@ -14,7 +14,7 @@
     top: 0;
     right: unset;
     background-color: map-get($colors, transparent);
-    color: map-get($colors, white);
+    color: map-get($colors, trip-white);
     font-size: 12px;
     font-weight: bold;
   }

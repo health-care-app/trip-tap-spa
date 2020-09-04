@@ -19,14 +19,14 @@
         &:not(.ui-state-disabled):hover {
           padding: 3px;
           border: 0;
-          background-color: map-get($colors, white);
+          background-color: map-get($colors, trip-white);
         }
 
         .ui-chkbox-icon {
           width: 20px;
           height: 20px;
           border-radius: 6px;
-          background-color: map-get($colors, green);
+          background-color: map-get($colors, trip-green);
           font-size: 18px;
 
           &::before {
@@ -40,7 +40,7 @@
   .ui-chkbox-label {
     display: inline-flex;
     align-items: center;
-    color: map-get($colors, white);
+    color: map-get($colors, trip-white);
     font-size: 15px;
   }
 }

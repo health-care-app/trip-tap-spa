@@ -8,16 +8,16 @@
     outline: 0;
     border-radius: 0;
     border-width: 0 0 1px;
-    border-color: map-get($colors, white);
+    border-color: map-get($colors, trip-white);
     background-color: map-get($colors, transparent);
-    color: map-get($colors, white);
+    color: map-get($colors, trip-white);
     padding: 0px 4px;
 
     &:enabled {
       &:hover {
         &:not(.ui-state-error) {
           box-shadow: none;
-          border-color: map-get($colors, white);
+          border-color: map-get($colors, trip-white);
 
           &.ng-dirty.ng-invalid {
             border-color: map-get($colors, red-error);
