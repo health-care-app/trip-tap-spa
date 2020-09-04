@@ -39,6 +39,7 @@ export class SignUpComponent implements OnInit {
       [FieldsNames.LastName]: [ '', [ Validators.required, Validators.pattern(REGEX.name) ] ],
       [FieldsNames.Email]: [ '', [ Validators.required, Validators.email ] ],
       [FieldsNames.Password]: [ '', [ Validators.required, Validators.pattern(REGEX.password) ] ],
+      [FieldsNames.IsTripOrganizer]: [ false ],
     });
   }
 }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'trip-reactive-field',
+  selector: 'trip-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

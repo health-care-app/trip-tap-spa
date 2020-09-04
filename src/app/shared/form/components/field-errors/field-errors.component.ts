@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { FieldErrors } from '../../enums/field-errors.enum';
 
@@ -9,13 +10,17 @@ import { FieldErrors } from '../../enums/field-errors.enum';
   styleUrls: ['./field-errors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FieldErrorsComponent {
+export class FieldErrorsComponent implements OnDestroy {
   public get fieldControl(): AbstractControl {
     return this.control;
   }
 
   @Input() public set fieldControl(control: AbstractControl) {
     this.control = control;
+
+    this.controlValueChangeSubscription = control.valueChanges.subscribe((): void => {
+      this.changeDetectorRef.markForCheck();
+    });
 
     if (this.markAsTouched) {
       this.control.markAsTouched();
@@ -28,4 +33,14 @@ export class FieldErrorsComponent {
   public fieldErrors: typeof FieldErrors = FieldErrors;
 
   private control: AbstractControl;
+  private controlValueChangeSubscription: Subscription;
+
+  public constructor(
+    private readonly changeDetectorRef: ChangeDetectorRef,
+  ) {
+  }
+
+  public ngOnDestroy(): void {
+    this.controlValueChangeSubscription.unsubscribe();
+  }
 }

@@ -2,13 +2,14 @@
   "AUTH": {
     "SIGN_IN": "Sign in",
     "SIGN_UP": "Sign up",
-    "NOT_A_MEMBER": "You’re not a member yet?",
-    "ALREADY_A_MEMBER": "You’re already a member?",
+    "NOT_A_MEMBER": "Not a TripnTap user yet?",
+    "ALREADY_A_MEMBER": "Already a TripnTap user?",
     "FIELDS": {
       "FIRST_NAME": "First Name",
       "LAST_NAME": "Last Name",
       "EMAIL": "Email Address",
-      "PASSWORD": "Password"
+      "PASSWORD": "Password",
+      "IS_TRIP_ORGANIZER": "Is Trip Organizer"
     }
   }
 }

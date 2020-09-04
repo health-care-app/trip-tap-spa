@@ -1,0 +1,25 @@
+.ui-float-label {
+  width: 100%;
+
+  .form-field__label {
+    color: map-get($colors, white);
+    font-size: 15px;
+    left: 4px;
+  }
+
+  .ui-state-filled ~ .form-field__label,
+  .ui-inputwrapper-filled ~ .form-field__label,
+  .ui-inputwrapper-focus ~ .form-field__label,
+  .ui-inputtext:focus ~ .form-field__label {
+    top: 0;
+    right: unset;
+    background-color: map-get($colors, transparent);
+    color: map-get($colors, white);
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .ng-dirty.ng-invalid ~ .form-field__label {
+    color: map-get($colors, red-error);
+  }
+}

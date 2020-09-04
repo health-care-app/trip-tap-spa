@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { ModuleRoutes } from '@Enums/routes.enum';
@@ -20,6 +21,7 @@ import { authReducer } from './store/auth.reducers';
 
 const primeNgModules: Module[] = [
   ButtonModule,
+  CheckboxModule,
   InputTextModule,
 ];
 

@@ -1,0 +1,17 @@
+.ui-button {
+  &.signin {
+    background-color: map-get($colors, dark-green);
+    border: 0;
+    height: 54px;
+    width: 100%;
+    border-radius: 40px;
+  }
+
+  &.signup {
+    background-color: map-get($colors, green);
+    border: 0;
+    height: 54px;
+    width: 100%;
+    border-radius: 40px;
+  }
+}

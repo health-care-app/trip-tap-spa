@@ -1,0 +1,8 @@
+@import 'variables';
+
+.error-message {
+  color: map-get($colors, red-error);
+  font-size: 12px;
+  top: 4px;
+  position: relative;
+}
