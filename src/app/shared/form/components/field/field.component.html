@@ -14,7 +14,7 @@
 
     <trip-field-errors
       *ngIf="formGroup && label.length > 0"
-      [label]="translationPath + label | translate"
+      [label]="translationPath + '.' + label | translate"
       [fieldControl]="formGroup.controls[labelFor]"
     ></trip-field-errors>
   </div>

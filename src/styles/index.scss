@@ -1,0 +1,9 @@
+@import './primeng/index';
+
+body {
+  margin: 0;
+
+  * {
+    font-family: map-get($fonts, main);
+  }
+}

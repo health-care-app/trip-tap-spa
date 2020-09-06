@@ -1,78 +1,105 @@
-<form
-  [formGroup]="signUpForm"
-  (submit)="signIn(signUpForm.value)"
->
-  <trip-reactive-field
-    translationPath="AUTH.FIELDS"
-    label="FIRST_NAME"
-    [labelFor]="FieldsNames.FirstName"
+<div class="signup">
+  <img
+    class="signup__logo"
+    src="assets/images/logo-white.png"
+  />
+
+  <form
+    class="signup__form"
     [formGroup]="signUpForm"
+    (submit)="signIn(signUpForm.value)"
   >
-    <input
-      pInputText
-      [id]="FieldsNames.FirstName"
-      class="form-field__input"
-      type="text"
-      [formControlName]="FieldsNames.FirstName"
+    <trip-field
+      translationPath="AUTH.FIELDS"
+      label="FIRST_NAME"
+      [labelFor]="FieldsNames.FirstName"
+      [formGroup]="signUpForm"
     >
-  </trip-reactive-field>
+      <input
+        pInputText
+        autocomplete="off"
+        [id]="FieldsNames.FirstName"
+        class="form-field__input"
+        type="text"
+        [formControlName]="FieldsNames.FirstName"
+      >
+    </trip-field>
 
-  <trip-reactive-field
-    translationPath="AUTH.FIELDS"
-    label="LAST_NAME"
-    [labelFor]="FieldsNames.LastName"
-    [formGroup]="signUpForm"
-  >
-    <input
-      pInputText
-      [id]="FieldsNames.LastName"
-      class="form-field__input"
-      type="text"
-      [formControlName]="FieldsNames.LastName"
+    <trip-field
+      translationPath="AUTH.FIELDS"
+      label="LAST_NAME"
+      [labelFor]="FieldsNames.LastName"
+      [formGroup]="signUpForm"
     >
-  </trip-reactive-field>
+      <input
+        pInputText
+        autocomplete="off"
+        [id]="FieldsNames.LastName"
+        class="form-field__input"
+        type="text"
+        [formControlName]="FieldsNames.LastName"
+      >
+    </trip-field>
 
-  <trip-reactive-field
-    translationPath="AUTH.FIELDS"
-    label="EMAIL"
-    [labelFor]="FieldsNames.Email"
-    [formGroup]="signUpForm"
-  >
-    <input
-      pInputText
-      [id]="FieldsNames.Email"
-      class="form-field__input"
-      type="text"
-      [formControlName]="FieldsNames.Email"
+    <trip-field
+      translationPath="AUTH.FIELDS"
+      label="EMAIL"
+      [labelFor]="FieldsNames.Email"
+      [formGroup]="signUpForm"
     >
-  </trip-reactive-field>
+      <input
+        pInputText
+        autocomplete="off"
+        [id]="FieldsNames.Email"
+        class="form-field__input"
+        type="text"
+        [formControlName]="FieldsNames.Email"
+      >
+    </trip-field>
 
-  <trip-reactive-field
-    translationPath="AUTH.FIELDS"
-    label="PASSWORD"
-    [labelFor]="FieldsNames.Password"
-    [formGroup]="signUpForm"
-  >
-    <input
-      pInputText
-      [id]="FieldsNames.Password"
-      class="form-field__input"
-      type="password"
-      [formControlName]="FieldsNames.Password"
+    <trip-field
+      translationPath="AUTH.FIELDS"
+      label="PASSWORD"
+      [labelFor]="FieldsNames.Password"
+      [formGroup]="signUpForm"
     >
-  </trip-reactive-field>
+      <input
+        pInputText
+        [id]="FieldsNames.Password"
+        class="form-field__input"
+        type="password"
+        [formControlName]="FieldsNames.Password"
+      >
+    </trip-field>
 
-  <p-button
-    type="submit"
-    [label]="'AUTH.SIGN_UP' | translate"
-    [disabled]="signUpForm && signUpForm.invalid"
-  ></p-button>
-</form>
+    <trip-field>
+      <p-checkbox
+        binary="true"
+        [label]="'AUTH.FIELDS.SIGN_UP_AS_TRIP_ORGANIZER' | translate"
+        [id]="FieldsNames.IsTripOrganizer"
+        class="form-field__checkbox"
+        [formControlName]="FieldsNames.IsTripOrganizer"
+      ></p-checkbox>
 
-<label>
-  {{ 'AUTH.ALREADY_A_MEMBER' | translate }}
+    </trip-field>
 
-  <a [routerLink]="[signInLink]">
-    {{ 'AUTH.SIGN_IN' | translate }}
-  </a>
-</label>
+    <p-button
+      class="signup__form_submit"
+      styleClass="signup"
+      type="submit"
+      [label]="'AUTH.SIGN_UP' | translate"
+      [disabled]="signUpForm && signUpForm.invalid"
+    ></p-button>
+  </form>
+
+  <label class="signup__already-user">
+    {{ 'AUTH.ALREADY_A_MEMBER' | translate }}
+
+    <a
+      class="signup__already-user_signin"
+      [routerLink]="[signInLink]"
+    >
+      {{ 'AUTH.SIGN_IN' | translate }}
+    </a>
+  </label>
+</div>

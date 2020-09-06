@@ -1,0 +1,44 @@
+@import 'variables';
+
+:host {
+  display: block;
+  background-image: url('assets/images/auth-bg.png');
+  background-size: cover;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.signup {
+  margin: auto;
+  padding-top: 120px;
+  width: 70%;
+
+  &__logo {
+    width: 50%;
+    margin: 0 auto 50px;
+    display: block;
+  }
+
+  &__form {
+    &_submit {
+      margin-top: 28px;
+      width: 100%;
+      height: fit-content;
+    }
+  }
+
+  &__already-user {
+    font-size: 12px;
+    color: map-get($colors, trip-white);
+    margin-top: 16px;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+
+    &_signin {
+      color: map-get($colors, trip-white);
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}

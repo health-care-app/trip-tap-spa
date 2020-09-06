@@ -3,4 +3,5 @@ export enum FieldsNames {
   LastName = 'lastName',
   Email = 'email',
   Password = 'password',
+  IsTripOrganizer = 'isTripOrganizer',
 }
