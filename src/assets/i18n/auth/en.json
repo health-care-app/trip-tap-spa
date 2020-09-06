@@ -9,7 +9,7 @@
       "LAST_NAME": "Last Name",
       "EMAIL": "Email Address",
       "PASSWORD": "Password",
-      "IS_TRIP_ORGANIZER": "Is Trip Organizer"
+      "SIGN_UP_AS_TRIP_ORGANIZER": "Sign up as a Trip Organizer"
     }
   }
 }
