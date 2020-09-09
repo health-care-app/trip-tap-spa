@@ -117,7 +117,8 @@
         "@Interceptors",
         "@Store",
         "@Auth",
-        "@Guards"
+        "@Guards",
+        "@Customers"
       ]
     ],
     "no-inferred-empty-object-type": true,
@@ -157,7 +158,8 @@
       "@Interceptors",
       "@Store",
       "@Auth",
-      "@Guards"
+      "@Guards",
+      "@Customers"
     ],
     "no-switch-case-fall-through": true,
     "no-tautology-expression": true,
