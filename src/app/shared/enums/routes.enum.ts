@@ -11,4 +11,5 @@ export enum AuthRoutes {
 export enum CustomersRoutes {
   Root = '',
   Trips = 'trips',
+  Id = ':id',
 }

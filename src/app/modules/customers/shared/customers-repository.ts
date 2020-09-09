@@ -31,4 +31,8 @@ export class CustomersRepository {
       } },
     );
   }
+
+  public getTrip(tripId: number): Observable<Trip> {
+    return this.httpClient.get<Trip>(`${environment.apiUrl}/${ApiUrls.Trips}/${tripId}`);
+  }
 }

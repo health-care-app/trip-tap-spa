@@ -3,11 +3,11 @@ import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effec
 import { Observable } from 'rxjs';
 import { finalize, map, switchMap } from 'rxjs/operators';
 
-import { GetAllTripsProps } from '../models/action-props.model';
+import { GetAllTripsProps, GetTripProps } from '../models/action-props.model';
 import { Trip } from '../models/trip.model';
 import { CustomersRepository } from '../shared/customers-repository';
-import { GetAllTripsSuccessActionType } from '../types/action.types';
-import { CustomersActionsTypes, getAllTripsSuccess } from './customers.actions';
+import { GetAllTripsSuccessActionType, GetTripSuccessActionType } from '../types/action.types';
+import { CustomersActionsTypes, getAllTripsSuccess, getTripSuccess } from './customers.actions';
 import { CustomersFacade } from './customers.facade';
 
 @Injectable({ providedIn: 'root' })
@@ -22,6 +22,20 @@ export class CustomersEffects {
             this.customersFacade.setPendingState(false);
           }),
           map((trips: Trip[]): GetAllTripsSuccessActionType => getAllTripsSuccess({trips})),
+        )
+    ),
+  );
+
+  public getTrip$: CreateEffectMetadata = createEffect(
+    (): Observable<GetTripSuccessActionType> => (
+      this.actions$
+        .pipe(
+          ofType(CustomersActionsTypes.GetTrip),
+          switchMap((action: GetTripProps): Observable<Trip> => this.customersRepository.getTrip(action.tripId)),
+          finalize((): void => {
+            this.customersFacade.setPendingState(false);
+          }),
+          map((trip: Trip): GetTripSuccessActionType => getTripSuccess({trip})),
         )
     ),
   );

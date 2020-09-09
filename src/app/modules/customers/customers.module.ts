@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ModuleRoutes } from '@Enums/routes.enum';
 
 import { TripsListComponent } from './components/trips-list/trips-list.component';
+import { TripsViewComponent } from './components/trips-view/trips-view.component';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersEffects } from './store/customers.effects';
 import { customersReducer } from './store/customers.reducers';
@@ -14,6 +15,7 @@ import { customersReducer } from './store/customers.reducers';
 @NgModule({
   declarations: [
     TripsListComponent,
+    TripsViewComponent,
   ],
   imports: [
     CommonModule,
