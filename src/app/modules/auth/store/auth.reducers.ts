@@ -2,7 +2,7 @@ import { ActionReducer, createReducer, on } from '@ngrx/store';
 
 import { SetPendingActionType } from '@Types/pending-action.types';
 
-import { SignInSuccessActionType, SignUpSuccessActionType } from '../shared/types/action.types';
+import { SignInSuccessActionType, SignUpSuccessActionType } from '../types/action.types';
 import { AuthActionsTypes, setPendingState, signIn, signInSuccess, signUp, signUpSuccess } from './auth.actions';
 import { AuthState } from './auth.state';
 

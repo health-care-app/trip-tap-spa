@@ -1,6 +1,6 @@
 import { State } from '@Models/store.model';
 
-import { Profile } from '../shared/models/profile.model';
+import { Profile } from '../models/profile.model';
 
 interface AuthSelectors {
   selectAuthProfile(state: State): Profile;

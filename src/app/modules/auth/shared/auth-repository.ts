@@ -8,10 +8,10 @@ import { map, tap } from 'rxjs/operators';
 import { ApiUrls } from '@Enums/api-urls.enum';
 import { environment } from '@Environment';
 
+import { Profile } from '../models/profile.model';
+import { SignInCredentials } from '../models/sign-in.model';
+import { SignUpCredentials } from '../models/sign-up.model';
 import { AuthService } from './auth.service';
-import { Profile } from './models/profile.model';
-import { SignInCredentials } from './models/sign-in.model';
-import { SignUpCredentials } from './models/sign-up.model';
 
 interface AccessTokenInterface {
   accessToken: string;

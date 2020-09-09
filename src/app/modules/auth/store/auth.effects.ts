@@ -7,11 +7,11 @@ import { finalize, map, switchMap, tap } from 'rxjs/operators';
 import { ModuleRoutes } from '@Enums/routes.enum';
 import { UserTypes } from '@Enums/user-types.enum';
 
+import { SignInProps, SignUpProps } from '../models/action-props.model';
+import { Profile } from '../models/profile.model';
 import { AuthRepository } from '../shared/auth-repository';
-import { SignInProps, SignUpProps } from '../shared/models/action-props.model';
-import { Profile } from '../shared/models/profile.model';
-import { SignInSuccessActionType, SignUpSuccessActionType } from '../shared/types/action.types';
 import { AuthActionsTypes, signInSuccess, signUpSuccess } from '../store/auth.actions';
+import { SignInSuccessActionType, SignUpSuccessActionType } from '../types/action.types';
 import { AuthFacade } from './auth.facade';
 
 @Injectable({ providedIn: 'root' })
