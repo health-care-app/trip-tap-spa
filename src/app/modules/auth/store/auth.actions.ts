@@ -1,6 +1,6 @@
+// tslint:disable: max-line-length
 import { createAction, props } from '@ngrx/store';
 
-// tslint:disable: max-line-length
 import { PendingProps } from '@Models/pending-props.model';
 import { ActionCreatorPropsType } from '@Types/action.types';
 
