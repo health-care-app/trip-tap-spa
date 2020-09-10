@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { finalize, map, switchMap } from 'rxjs/operators';
+import { finalize, map, switchMap, tap } from 'rxjs/operators';
 
+import { ModuleRoutes } from '@Enums/routes.enum';
+import { UserTypes } from '@Enums/user-types.enum';
+
+import { SignInProps, SignUpProps } from '../models/action-props.model';
+import { Profile } from '../models/profile.model';
 import { AuthRepository } from '../shared/auth-repository';
-import { SignInProps, SignUpProps } from '../shared/models/action-props.model';
-import { Profile } from '../shared/models/profile.model';
-import { SignInSuccessActionType, SignUpSuccessActionType } from '../shared/types/action.types';
 import { AuthActionsTypes, signInSuccess, signUpSuccess } from '../store/auth.actions';
+import { SignInSuccessActionType, SignUpSuccessActionType } from '../types/action.types';
 import { AuthFacade } from './auth.facade';
 
 @Injectable({ providedIn: 'root' })
@@ -26,6 +30,23 @@ export class AuthEffects {
     ),
   );
 
+  public singInSuccess$: CreateEffectMetadata = createEffect(
+    (): Observable<Profile> => (
+      this.actions$
+        .pipe(
+          ofType(AuthActionsTypes.SignInSuccess),
+          tap((profile: Profile): void => {
+            switch (profile.userType) {
+              case UserTypes.customer:
+              default:
+                this.router.navigate([ModuleRoutes.Customers]);
+            }
+          }),
+        )
+    ),
+    { dispatch: false },
+  );
+
   public singUp$: CreateEffectMetadata = createEffect(
     (): Observable<SignUpSuccessActionType> => (
       this.actions$
@@ -40,7 +61,25 @@ export class AuthEffects {
     ),
   );
 
+  public singUpSuccess$: CreateEffectMetadata = createEffect(
+    (): Observable<Profile> => (
+      this.actions$
+        .pipe(
+          ofType(AuthActionsTypes.SignUpSuccess),
+          tap((profile: Profile): void => {
+            switch (profile.userType) {
+              case UserTypes.customer:
+              default:
+                this.router.navigate([ModuleRoutes.Customers]);
+            }
+          }),
+        )
+    ),
+    { dispatch: false },
+  );
+
   public constructor(
+    private readonly router: Router,
     private readonly actions$: Actions,
     private readonly authFacade: AuthFacade,
     private readonly authRepository: AuthRepository,

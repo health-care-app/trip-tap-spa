@@ -12,6 +12,11 @@ const routes: Routes = [
       .then((module: Module): Module => module.AuthModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: ModuleRoutes.Customers,
+    loadChildren: (): Promise<Module> => import('./modules/customers/customers.module')
+      .then((module: Module): Module => module.CustomersModule),
+  },
 ];
 
 @NgModule({

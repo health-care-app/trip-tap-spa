@@ -1,9 +1,10 @@
 // tslint:disable: max-line-length
 import { createAction, props } from '@ngrx/store';
 
-import { ProfileProps, SignInProps, SignUpProps } from '@Auth/shared/models/action-props.model';
 import { PendingProps } from '@Models/pending-props.model';
 import { ActionCreatorPropsType } from '@Types/action.types';
+
+import { ProfileProps, SignInProps, SignUpProps } from '../models/action-props.model';
 
 export enum AuthActionsTypes {
   Pending = '[Auth] PENDING',

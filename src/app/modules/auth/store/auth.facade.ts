@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Profile } from '@Auth/shared/models/profile.model';
-import { SignInCredentials } from '@Auth/shared/models/sign-in.model';
-import { SignUpCredentials } from '@Auth/shared/models/sign-up.model';
 import { State } from '@Models/store.model';
 
+import { Profile } from '../models/profile.model';
+import { SignInCredentials } from '../models/sign-in.model';
+import { SignUpCredentials } from '../models/sign-up.model';
 import { setPendingState, signIn, signUp } from './auth.actions';
 import { authSelectors } from './auth.selectors';
 

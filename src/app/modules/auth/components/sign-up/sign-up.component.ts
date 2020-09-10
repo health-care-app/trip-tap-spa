@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { SignUpCredentials } from '@Auth/shared/models/sign-up.model';
-import { AuthFacade } from '@Auth/store/auth.facade';
 import { REGEX } from '@Consts/regex.const';
 import { AuthRoutes, ModuleRoutes } from '@Enums/routes.enum';
 import { FieldsNames } from '@Form/enums/field-names.enum';
+
+import { SignUpCredentials } from '../../models/sign-up.model';
+import { AuthFacade } from '../../store/auth.facade';
 
 @Component({
   selector: 'trip-sign-up',
