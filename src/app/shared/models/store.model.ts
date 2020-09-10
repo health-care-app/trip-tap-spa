@@ -5,11 +5,11 @@ import { CustomersState } from '@Customers/store/customers.state';
 import { ErrorState } from '@Store/error/error.state';
 
 export interface LazyModules {
-  auth?: AuthState;
   customers?: CustomersState;
 }
 
 export interface Shared {
+  auth: AuthState;
   error: ErrorState;
 }
 

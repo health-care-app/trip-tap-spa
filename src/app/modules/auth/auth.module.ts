@@ -1,23 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 
-import { ModuleRoutes } from '@Enums/routes.enum';
 import { FieldErrorsComponent } from '@Form/components/field-errors/field-errors.component';
 import { FieldComponent } from '@Form/components/field/field.component';
-import { Module } from '@Types/module.types';
+import { ComponentsType, Module, ModulesType } from '@Types/module.types';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AuthRepository } from './shared/auth-repository';
 import { AuthEffects } from './store/auth.effects';
-import { authReducer } from './store/auth.reducers';
+
+const sharedComponents: ComponentsType = [
+  FieldComponent,
+  FieldErrorsComponent,
+];
+
+const components: ComponentsType = [
+  ...sharedComponents,
+  SignInComponent,
+  SignUpComponent,
+];
 
 const primeNgModules: Module[] = [
   ButtonModule,
@@ -25,22 +34,23 @@ const primeNgModules: Module[] = [
   InputTextModule,
 ];
 
+const modules: ModulesType = [
+  ...primeNgModules,
+  CommonModule,
+  AuthRoutingModule,
+  ReactiveFormsModule,
+  TranslateModule.forChild({}),
+  EffectsModule.forFeature([AuthEffects]),
+];
+
+const services: Provider[] = [
+  AuthRepository,
+];
+
 @NgModule({
-  declarations: [
-    SignInComponent,
-    SignUpComponent,
-    FieldComponent,
-    FieldErrorsComponent,
-  ],
-  imports: [
-    ...primeNgModules,
-    CommonModule,
-    AuthRoutingModule,
-    ReactiveFormsModule,
-    StoreModule.forFeature(ModuleRoutes.Auth, authReducer),
-    EffectsModule.forFeature([AuthEffects]),
-    TranslateModule.forChild({}),
-  ],
+  declarations: [ ...components ],
+  imports: [ ...modules ],
+  providers: [ ...services ],
 })
 export class AuthModule {
 }

@@ -11,6 +11,7 @@ interface TranslateResourceInterface {
 export class MultiTranslateLoader implements TranslateLoader {
 
   private readonly translationFiles: string[] = [
+    'app',
     'auth',
     'form',
   ];

@@ -5,18 +5,18 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@Enums/http-headers.enum';
 import { ModuleRoutes } from '@Enums/routes.enum';
 import { environment } from '@Environment';
-import { AuthService } from '@Modules/auth/shared/auth.service';
+import { AccessTokenService } from '@Services/access-token.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   public constructor(
-    private readonly authService: AuthService,
+    private readonly accessTokenService: AccessTokenService,
   ) {
   }
 
   public intercept(request: HttpRequest<typeof HttpHeaders>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const accessToken: string = this.authService.getAccessToken();
+    const accessToken: string = this.accessTokenService.getAccessToken();
 
     if (!request.url.includes(environment.apiUrl) || request.url.includes(ModuleRoutes.Auth) || !accessToken) {
       return next.handle(request);

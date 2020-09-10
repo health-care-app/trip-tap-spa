@@ -8,7 +8,7 @@ import { Trip } from '../models/trip.model';
 import { getAllTrips, getTrip, setPendingState } from './customers.actions';
 import { customersSelectors } from './customers.selectors';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CustomersFacade {
   public trips$: Observable<Trip> = this.store.pipe(select(customersSelectors.selectCustomersTrip));
   public allTrips$: Observable<Trip[]> = this.store.pipe(select(customersSelectors.selectCustomersAllTrips));

@@ -14,7 +14,7 @@ import { AuthActionsTypes, signInSuccess, signUpSuccess } from '../store/auth.ac
 import { SignInSuccessActionType, SignUpSuccessActionType } from '../types/action.types';
 import { AuthFacade } from './auth.facade';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthEffects {
   public singIn$: CreateEffectMetadata = createEffect(
     (): Observable<SignInSuccessActionType> => (

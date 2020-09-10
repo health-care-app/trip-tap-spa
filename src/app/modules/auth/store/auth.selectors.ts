@@ -8,6 +8,6 @@ interface AuthSelectors {
 }
 
 export const authSelectors: AuthSelectors = {
-  selectAuthProfile: (state: State): Profile => state.auth.profile,
-  selectAuthPending: (state: State): boolean => state.auth.pending,
+  selectAuthProfile: (state: State): Profile => state.shared.auth.profile,
+  selectAuthPending: (state: State): boolean => state.shared.auth.pending,
 };

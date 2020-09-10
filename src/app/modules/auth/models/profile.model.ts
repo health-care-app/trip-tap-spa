@@ -2,7 +2,7 @@ import { UserTypes } from '@Enums/user-types.enum';
 
 export interface Profile {
   id: number;
-  userType: UserTypes,
+  userType: UserTypes;
   username: string;
   email: string;
   approved: boolean;
