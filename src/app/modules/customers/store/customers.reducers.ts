@@ -18,17 +18,17 @@ export const customersReducer: ActionReducer<CustomersState> = createReducer(
     ...state,
     pending: action.isPending,
   })),
-  on(getAllTrips, (state: CustomersState): CustomersState => ({
-    ...state,
-    pending: true,
-  })),
+  on(
+    getTrip,
+    getAllTrips,
+    (state: CustomersState): CustomersState => ({
+      ...state,
+      pending: true,
+    }),
+  ),
   on(getAllTripsSuccess, (state: CustomersState, action: GetAllTripsSuccessActionType): CustomersState => ({
     ...state,
     trips: action.trips,
-  })),
-  on(getTrip, (state: CustomersState): CustomersState => ({
-    ...state,
-    pending: true,
   })),
   on(getTripSuccess, (state: CustomersState, action: GetTripSuccessActionType): CustomersState => ({
     ...state,

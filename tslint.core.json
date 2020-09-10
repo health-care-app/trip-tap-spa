@@ -118,7 +118,9 @@
         "@Store",
         "@Auth",
         "@Guards",
-        "@Customers"
+        "@Customers",
+        "@Providers",
+        "@Services"
       ]
     ],
     "no-inferred-empty-object-type": true,
@@ -159,7 +161,9 @@
       "@Store",
       "@Auth",
       "@Guards",
-      "@Customers"
+      "@Customers",
+      "@Providers",
+      "@Services"
     ],
     "no-switch-case-fall-through": true,
     "no-tautology-expression": true,

@@ -28,6 +28,8 @@
       "@Mocks/*": ["app/shared/mocks/*"],
       "@Models/*": ["app/shared/models/*"],
       "@Types/*": ["app/shared/types/*"],
+      "@Providers/*": ["app/shared/providers/*"],
+      "@Services/*": ["app/shared/services/*"],
       "@Modules/*": ["app/modules/*"],
       "@Pipes/*": ["app/shared/pipes/*"],
       "@Specs/*": ["app/specs/*"],

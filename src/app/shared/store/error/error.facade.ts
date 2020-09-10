@@ -8,7 +8,7 @@ import { State } from '@Models/store.model';
 import { catchError, clearError } from './error.actions';
 import { errorSelectors } from './error.selectors';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ErrorFacade {
   public error$: Observable<Error> = this.store.pipe(select(errorSelectors.selectError));
 

@@ -15,6 +15,11 @@ const routes: Routes = [
     path: AuthRoutes.SignUp,
     component: SignUpComponent,
   },
+  {
+    path: AuthRoutes.Root,
+    pathMatch: 'full',
+    redirectTo: AuthRoutes.SignIn,
+  },
 ];
 
 @NgModule({

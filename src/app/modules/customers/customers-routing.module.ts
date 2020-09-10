@@ -8,11 +8,6 @@ import { TripsViewComponent } from './components/trips-view/trips-view.component
 
 const routes: Routes = [
   {
-    path: CustomersRoutes.Root,
-    redirectTo: CustomersRoutes.Trips,
-    pathMatch: 'full',
-  },
-  {
     path: CustomersRoutes.Trips,
     children: [
       {
@@ -24,6 +19,11 @@ const routes: Routes = [
         component: TripsViewComponent,
       },
     ],
+  },
+  {
+    path: CustomersRoutes.Root,
+    pathMatch: 'full',
+    redirectTo: CustomersRoutes.Trips,
   },
 ];
 

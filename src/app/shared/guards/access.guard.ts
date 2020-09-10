@@ -4,7 +4,7 @@ import { CanActivate } from '@angular/router';
 import { AccessTokenService } from '@Services/access-token.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AccessGuard implements CanActivate {
   public readonly accessToken: string = this.accessTokenService.getAccessToken();
 
   public constructor(
@@ -13,6 +13,6 @@ export class AuthGuard implements CanActivate {
   }
 
   public canActivate(): boolean {
-    return !this.accessToken;
+    return !!this.accessToken;
   }
 }

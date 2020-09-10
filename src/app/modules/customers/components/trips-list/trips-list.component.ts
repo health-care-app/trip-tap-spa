@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { CustomersFacade } from '@Modules/customers/store/customers.facade';
+import { CustomersFacade } from '../../store/customers.facade';
 
 @Component({
   selector: 'trip-trips-list',

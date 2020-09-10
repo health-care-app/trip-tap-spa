@@ -7,7 +7,7 @@ import { environment } from '@Environment';
 
 import { Trip } from '../models/trip.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CustomersRepository {
 
   public constructor(

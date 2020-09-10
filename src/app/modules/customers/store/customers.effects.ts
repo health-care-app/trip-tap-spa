@@ -10,7 +10,7 @@ import { GetAllTripsSuccessActionType, GetTripSuccessActionType } from '../types
 import { CustomersActionsTypes, getAllTripsSuccess, getTripSuccess } from './customers.actions';
 import { CustomersFacade } from './customers.facade';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CustomersEffects {
   public getAllTrips$: CreateEffectMetadata = createEffect(
     (): Observable<GetAllTripsSuccessActionType> => (
