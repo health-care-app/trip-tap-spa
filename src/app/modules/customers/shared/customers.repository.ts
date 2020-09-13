@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ApiUrls } from '@Enums/api-urls.enum';
 import { environment } from '@Environment';
-
-import { Trip } from '../models/trip.model';
+import { Trip } from '@Models/trip.model';
 
 @Injectable()
 export class CustomersRepository {
@@ -15,20 +14,10 @@ export class CustomersRepository {
   ) {
   }
 
-  public getAllTrips(active: boolean): Observable<Trip[]> {
-    let activeAsString: string;
-
-    try {
-      activeAsString = active.toString();
-    // tslint:disable-next-line: no-empty
-    } catch {
-    }
-
+  public getAllTrips(): Observable<Trip[]> {
     return this.httpClient.get<Trip[]>(
       `${environment.apiUrl}/${ApiUrls.Trips}`,
-      { params: {
-        ...activeAsString ? { active: activeAsString } : {},
-      } },
+      { params: { active: 'true' } },
     );
   }
 

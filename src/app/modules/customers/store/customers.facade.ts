@@ -3,8 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { State } from '@Models/store.model';
+import { Trip } from '@Models/trip.model';
 
-import { Trip } from '../models/trip.model';
 import { getAllTrips, getTrip, setPendingState } from './customers.actions';
 import { customersSelectors } from './customers.selectors';
 
@@ -23,8 +23,8 @@ export class CustomersFacade {
     this.store.dispatch(setPendingState({isPending}));
   }
 
-  public getAllTrips(active?: boolean): void {
-    this.store.dispatch(getAllTrips({active}));
+  public getAllTrips(): void {
+    this.store.dispatch(getAllTrips());
   }
 
   public getTrip(tripId: number): void {

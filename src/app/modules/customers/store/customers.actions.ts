@@ -2,9 +2,9 @@
 import { createAction, props } from '@ngrx/store';
 
 import { PendingProps } from '@Models/pending-props.model';
-import { ActionCreatorPropsType } from '@Types/action.types';
+import { ActionCreatorPropsType, ActionCreatorType } from '@Types/action.types';
 
-import { GetAllTripsProps, GetTripProps, TripProps, TripsProps } from '../models/action-props.model';
+import { GetTripProps, TripProps, TripsProps } from '../models/action-props.model';
 
 export enum CustomersActionsTypes {
   Pending = '[Customers] PENDING',
@@ -18,7 +18,7 @@ export enum CustomersActionsTypes {
 
 export const setPendingState: ActionCreatorPropsType<CustomersActionsTypes.Pending, PendingProps> = createAction(CustomersActionsTypes.Pending, props<PendingProps>());
 
-export const getAllTrips: ActionCreatorPropsType<CustomersActionsTypes.GetAllTrips, GetAllTripsProps> = createAction(CustomersActionsTypes.GetAllTrips, props<GetAllTripsProps>());
+export const getAllTrips: ActionCreatorType<CustomersActionsTypes.GetAllTrips> = createAction(CustomersActionsTypes.GetAllTrips);
 export const getAllTripsSuccess: ActionCreatorPropsType<CustomersActionsTypes.GetAllTripsSuccess, TripsProps> = createAction(CustomersActionsTypes.GetAllTripsSuccess, props<TripsProps>());
 
 export const getTrip: ActionCreatorPropsType<CustomersActionsTypes.GetTrip, GetTripProps> = createAction(CustomersActionsTypes.GetTrip, props<GetTripProps>());

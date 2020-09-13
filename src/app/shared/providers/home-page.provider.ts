@@ -37,6 +37,9 @@ export const appInitializerFactory: HomePageProvider = (
       )
       .subscribe((profile: Profile): void => {
         switch (profile.userType) {
+          case UserTypes.tripOrganizer:
+            router.navigate([ModuleRoutes.TripOrganizers]);
+            break;
           case UserTypes.customer:
           default:
             router.navigate([ModuleRoutes.Customers]);

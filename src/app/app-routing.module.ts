@@ -18,7 +18,13 @@ const routes: Routes = [
     loadChildren: (): Promise<Module> => import('./modules/customers/customers.module')
       .then((module: Module): Module => module.CustomersModule),
     canActivate: [AccessGuard],
-    },
+  },
+  {
+    path: ModuleRoutes.TripOrganizers,
+    loadChildren: (): Promise<Module> => import('./modules/trip-organizers/trip-organizers.module')
+      .then((module: Module): Module => module.TripOrganizersModule),
+    canActivate: [AccessGuard],
+  },
   {
     path: ModuleRoutes.Root,
     pathMatch: 'full',

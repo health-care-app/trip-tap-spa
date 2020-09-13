@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthRepository } from './auth-repository';
+import { AuthRepository } from './auth.repository';
 
 describe('AuthRepository', (): void => {
   let service: AuthRepository;

@@ -3,9 +3,10 @@ import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effec
 import { Observable } from 'rxjs';
 import { finalize, map, switchMap } from 'rxjs/operators';
 
-import { GetAllTripsProps, GetTripProps } from '../models/action-props.model';
-import { Trip } from '../models/trip.model';
-import { CustomersRepository } from '../shared/customers-repository';
+import { Trip } from '@Models/trip.model';
+
+import { GetTripProps } from '../models/action-props.model';
+import { CustomersRepository } from '../shared/customers.repository';
 import { GetAllTripsSuccessActionType, GetTripSuccessActionType } from '../types/action.types';
 import { CustomersActionsTypes, getAllTripsSuccess, getTripSuccess } from './customers.actions';
 import { CustomersFacade } from './customers.facade';
@@ -17,7 +18,7 @@ export class CustomersEffects {
       this.actions$
         .pipe(
           ofType(CustomersActionsTypes.GetAllTrips),
-          switchMap((action: GetAllTripsProps): Observable<Trip[]> => this.customersRepository.getAllTrips(action.active)),
+          switchMap((): Observable<Trip[]> => this.customersRepository.getAllTrips()),
           finalize((): void => {
             this.customersFacade.setPendingState(false);
           }),

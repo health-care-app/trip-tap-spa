@@ -8,29 +8,27 @@ import { ModuleRoutes } from '@Enums/routes.enum';
 import { ComponentsType, ModulesType } from '@Types/module.types';
 
 import { TripsListComponent } from './components/trips-list/trips-list.component';
-import { TripsViewComponent } from './components/trips-view/trips-view.component';
-import { CustomersRoutingModule } from './customers-routing.module';
-import { CustomersRepository } from './shared/customers.repository';
-import { CustomersEffects } from './store/customers.effects';
-import { CustomersFacade } from './store/customers.facade';
-import { customersReducer } from './store/customers.reducers';
+import { TripOrganizersRepository } from './shared/trip-organizers.repository';
+import { TripOrganizersEffects } from './store/trip-organizers.effects';
+import { TripOrganizersFacade } from './store/trip-organizers.facade';
+import { tripOrganizersReducer } from './store/trip-organizers.reducers';
+import { TripOrganizersRoutingModule } from './trip-organizers-routing.module';
 
 const components: ComponentsType = [
   TripsListComponent,
-  TripsViewComponent,
 ];
 
 const modules: ModulesType = [
   CommonModule,
-  CustomersRoutingModule,
+  TripOrganizersRoutingModule,
   TranslateModule.forChild({}),
-  EffectsModule.forFeature([CustomersEffects]),
-  StoreModule.forFeature(ModuleRoutes.Customers, customersReducer),
+  EffectsModule.forFeature([TripOrganizersEffects]),
+  StoreModule.forFeature(ModuleRoutes.TripOrganizers, tripOrganizersReducer),
 ];
 
 const services: Provider[] = [
-  CustomersFacade,
-  CustomersRepository,
+  TripOrganizersFacade,
+  TripOrganizersRepository,
 ];
 
 @NgModule({
@@ -38,5 +36,5 @@ const services: Provider[] = [
   imports: [ ...modules ],
   providers: [ ...services ],
 })
-export class CustomersModule {
+export class TripOrganizersModule {
 }

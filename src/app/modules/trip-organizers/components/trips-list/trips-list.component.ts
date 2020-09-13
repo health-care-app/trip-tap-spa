@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { CustomersFacade } from '../../store/customers.facade';
+import { TripOrganizersFacade } from '../../store/trip-organizers.facade';
 
 @Component({
   selector: 'trip-trips-list',
@@ -11,11 +11,11 @@ import { CustomersFacade } from '../../store/customers.facade';
 export class TripsListComponent implements OnInit {
 
   public constructor(
-    private readonly customersFacade: CustomersFacade,
+    private readonly tripOrganizersFacade: TripOrganizersFacade,
   ) {
   }
 
   public ngOnInit(): void {
-    this.customersFacade.getAllTrips();
+    this.tripOrganizersFacade.getAllTrips();
   }
 }

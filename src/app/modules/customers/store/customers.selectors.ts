@@ -1,6 +1,5 @@
 import { State } from '@Models/store.model';
-
-import { Trip } from '../models/trip.model';
+import { Trip } from '@Models/trip.model';
 
 interface CustomersSelectors {
   selectCustomersTrip(state: State): Trip;

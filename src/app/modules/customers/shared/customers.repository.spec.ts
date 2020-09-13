@@ -1,7 +1,7 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { CustomersRepository } from './customers-repository';
+import { CustomersRepository } from './customers.repository';
 
 describe('CustomersRepository', (): void => {
   let repository: CustomersRepository;

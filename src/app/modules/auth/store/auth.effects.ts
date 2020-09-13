@@ -7,9 +7,9 @@ import { finalize, map, switchMap, tap } from 'rxjs/operators';
 import { ModuleRoutes } from '@Enums/routes.enum';
 import { UserTypes } from '@Enums/user-types.enum';
 
-import { SignInProps, SignUpProps } from '../models/action-props.model';
+import { ProfileProps, SignInProps, SignUpProps } from '../models/action-props.model';
 import { Profile } from '../models/profile.model';
-import { AuthRepository } from '../shared/auth-repository';
+import { AuthRepository } from '../shared/auth.repository';
 import { AuthActionsTypes, signInSuccess, signUpSuccess } from '../store/auth.actions';
 import { SignInSuccessActionType, SignUpSuccessActionType } from '../types/action.types';
 import { AuthFacade } from './auth.facade';
@@ -35,8 +35,12 @@ export class AuthEffects {
       this.actions$
         .pipe(
           ofType(AuthActionsTypes.SignInSuccess),
+          map((action: ProfileProps): Profile => action.profile),
           tap((profile: Profile): void => {
             switch (profile.userType) {
+              case UserTypes.tripOrganizer:
+                this.router.navigate([ModuleRoutes.TripOrganizers]);
+                break;
               case UserTypes.customer:
               default:
                 this.router.navigate([ModuleRoutes.Customers]);
@@ -66,8 +70,12 @@ export class AuthEffects {
       this.actions$
         .pipe(
           ofType(AuthActionsTypes.SignUpSuccess),
+          map((action: ProfileProps): Profile => action.profile),
           tap((profile: Profile): void => {
             switch (profile.userType) {
+              case UserTypes.tripOrganizer:
+                this.router.navigate([ModuleRoutes.TripOrganizers]);
+                break;
               case UserTypes.customer:
               default:
                 this.router.navigate([ModuleRoutes.Customers]);

@@ -1,11 +1,7 @@
-import { Trip } from './trip.model';
+import { Trip } from '@Models/trip.model';
 
 export interface GetTripProps {
   tripId: number;
-}
-
-export interface GetAllTripsProps {
-  active: boolean;
 }
 
 export interface TripProps {
