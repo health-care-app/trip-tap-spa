@@ -1,7 +1,7 @@
 import { Trip } from '../models/trip.model';
 
-export interface CustomersState {
-  trip: Trip;
-  trips: Trip[];
+export interface TripsState {
+  single: Trip;
+  list: Trip[];
   pending: boolean;
 }

@@ -4,7 +4,7 @@ export interface GetTripProps {
   tripId: number;
 }
 
-export interface GetAllTripsProps {
+export interface GetTripsListProps {
   active: boolean;
 }
 

@@ -14,9 +14,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: ModuleRoutes.Customers,
-    loadChildren: (): Promise<Module> => import('./modules/customers/customers.module')
-      .then((module: Module): Module => module.CustomersModule),
+    path: ModuleRoutes.Trips,
+    loadChildren: (): Promise<Module> => import('./modules/trips/trips.module')
+      .then((module: Module): Module => module.TripsModule),
     canActivate: [AccessGuard],
     },
   {

@@ -9,11 +9,11 @@ import { ComponentsType, ModulesType } from '@Types/module.types';
 
 import { TripsListComponent } from './components/trips-list/trips-list.component';
 import { TripsViewComponent } from './components/trips-view/trips-view.component';
-import { CustomersRoutingModule } from './customers-routing.module';
-import { CustomersRepository } from './shared/customers-repository';
-import { CustomersEffects } from './store/customers.effects';
-import { CustomersFacade } from './store/customers.facade';
-import { customersReducer } from './store/customers.reducers';
+import { TripsRepository } from './shared/trips.repository';
+import { TripsEffects } from './store/trips.effects';
+import { TripsFacade } from './store/trips.facade';
+import { tripsReducer } from './store/trips.reducers';
+import { TripsRoutingModule } from './trips-routing.module';
 
 const component: ComponentsType = [
   TripsListComponent,
@@ -22,15 +22,15 @@ const component: ComponentsType = [
 
 const modules: ModulesType = [
   CommonModule,
-  CustomersRoutingModule,
+  TripsRoutingModule,
   TranslateModule.forChild({}),
-  EffectsModule.forFeature([CustomersEffects]),
-  StoreModule.forFeature(ModuleRoutes.Customers, customersReducer),
+  EffectsModule.forFeature([TripsEffects]),
+  StoreModule.forFeature(ModuleRoutes.Trips, tripsReducer),
 ];
 
 const services: Provider[] = [
-  CustomersFacade,
-  CustomersRepository,
+  TripsFacade,
+  TripsRepository,
 ];
 
 @NgModule({
@@ -38,5 +38,5 @@ const services: Provider[] = [
   imports: [ ...modules ],
   providers: [ ...services ],
 })
-export class CustomersModule {
+export class TripsModule {
 }

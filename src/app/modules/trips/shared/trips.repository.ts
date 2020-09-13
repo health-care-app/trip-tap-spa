@@ -8,14 +8,14 @@ import { environment } from '@Environment';
 import { Trip } from '../models/trip.model';
 
 @Injectable()
-export class CustomersRepository {
+export class TripsRepository {
 
   public constructor(
     private readonly httpClient: HttpClient,
   ) {
   }
 
-  public getAllTrips(active: boolean): Observable<Trip[]> {
+  public getTripsList(active: boolean): Observable<Trip[]> {
     let activeAsString: string;
 
     try {

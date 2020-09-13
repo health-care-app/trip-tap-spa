@@ -1,11 +1,11 @@
 import { ActionReducer } from '@ngrx/store';
 
 import { AuthState } from '@Auth/store/auth.state';
-import { CustomersState } from '@Customers/store/customers.state';
 import { ErrorState } from '@Store/error/error.state';
+import { TripsState } from '@Trips/store/trips.state';
 
 export interface LazyModules {
-  customers?: CustomersState;
+  trips?: TripsState;
 }
 
 export interface Shared {
