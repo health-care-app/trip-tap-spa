@@ -39,7 +39,7 @@ export const appInitializerFactory: HomePageProvider = (
         switch (profile.userType) {
           case UserTypes.customer:
           default:
-            router.navigate([ModuleRoutes.Customers]);
+            router.navigate([ModuleRoutes.Trips]);
         }
       });
   }

@@ -39,7 +39,7 @@ export class AuthEffects {
             switch (profile.userType) {
               case UserTypes.customer:
               default:
-                this.router.navigate([ModuleRoutes.Customers]);
+                this.router.navigate([ModuleRoutes.Trips]);
             }
           }),
         )
@@ -70,7 +70,7 @@ export class AuthEffects {
             switch (profile.userType) {
               case UserTypes.customer:
               default:
-                this.router.navigate([ModuleRoutes.Customers]);
+                this.router.navigate([ModuleRoutes.Trips]);
             }
           }),
         )

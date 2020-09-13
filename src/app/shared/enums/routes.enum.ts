@@ -1,7 +1,7 @@
 export enum ModuleRoutes {
   Root = '',
   Auth = 'auth',
-  Customers = 'customers',
+  Trips = 'trips',
 }
 
 export enum AuthRoutes {
@@ -10,8 +10,8 @@ export enum AuthRoutes {
   SignUp = 'signup',
 }
 
-export enum CustomersRoutes {
+export enum TripsRoutes {
   Root = '',
-  Trips = 'trips',
   Id = ':id',
+  List = 'list',
 }

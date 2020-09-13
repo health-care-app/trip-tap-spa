@@ -1,14 +1,14 @@
 
 import { TestBed } from '@angular/core/testing';
 
-import { CustomersRepository } from './customers-repository';
+import { TripsRepository } from './trips.repository';
 
-describe('CustomersRepository', (): void => {
-  let repository: CustomersRepository;
+describe('TripsRepository', (): void => {
+  let repository: TripsRepository;
 
   beforeEach((): void => {
     TestBed.configureTestingModule({});
-    repository = TestBed.inject(CustomersRepository);
+    repository = TestBed.inject(TripsRepository);
   });
 
   it('should be created', (): void => {

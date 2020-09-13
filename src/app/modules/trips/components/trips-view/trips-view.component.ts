@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { CustomersFacade } from '../../store/customers.facade';
+import { TripsFacade } from '../../store/trips.facade';
 
 @Component({
   selector: 'trip-trips-view',
@@ -11,11 +11,11 @@ import { CustomersFacade } from '../../store/customers.facade';
 export class TripsViewComponent implements OnInit {
 
   public constructor(
-    private readonly customersFacade: CustomersFacade,
+    private readonly tripsFacade: TripsFacade,
   ) {
   }
 
   public ngOnInit(): void {
-    this.customersFacade.getTrip(1);
+    this.tripsFacade.getTrip(1);
   }
 }

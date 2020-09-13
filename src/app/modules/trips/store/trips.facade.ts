@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 import { State } from '@Models/store.model';
 
 import { Trip } from '../models/trip.model';
-import { getAllTrips, getTrip, setPendingState } from './customers.actions';
-import { customersSelectors } from './customers.selectors';
+import { getAllTrips, getTrip, setPendingState } from './trips.actions';
+import { tripsSelectors } from './trips.selectors';
 
 @Injectable()
-export class CustomersFacade {
-  public trips$: Observable<Trip> = this.store.pipe(select(customersSelectors.selectCustomersTrip));
-  public allTrips$: Observable<Trip[]> = this.store.pipe(select(customersSelectors.selectCustomersAllTrips));
-  public customersPending$: Observable<boolean> = this.store.pipe(select(customersSelectors.selectCustomersPending));
+export class TripsFacade {
+  public trips$: Observable<Trip> = this.store.pipe(select(tripsSelectors.selectTrip));
+  public tripsList$: Observable<Trip[]> = this.store.pipe(select(tripsSelectors.selectTripsList));
+  public tripsPending$: Observable<boolean> = this.store.pipe(select(tripsSelectors.selectTripsPending));
 
   public constructor(
     private readonly store: Store<State>,
@@ -23,7 +23,7 @@ export class CustomersFacade {
     this.store.dispatch(setPendingState({isPending}));
   }
 
-  public getAllTrips(active?: boolean): void {
+  public getTripsList(active?: boolean): void {
     this.store.dispatch(getAllTrips({active}));
   }
 

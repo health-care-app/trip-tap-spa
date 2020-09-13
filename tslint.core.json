@@ -118,7 +118,7 @@
         "@Store",
         "@Auth",
         "@Guards",
-        "@Customers",
+        "@Trips",
         "@Providers",
         "@Services"
       ]
@@ -161,7 +161,7 @@
       "@Store",
       "@Auth",
       "@Guards",
-      "@Customers",
+      "@Trips",
       "@Providers",
       "@Services"
     ],
