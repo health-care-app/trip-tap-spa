@@ -10,7 +10,7 @@
     [formGroup]="signInForm"
     (submit)="signIn(signInForm.value)"
   >
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="EMAIL"
       [labelFor]="FieldsNames.Email"
@@ -24,9 +24,9 @@
         type="text"
         [formControlName]="FieldsNames.Email"
       >
-    </trip-field>
+    </trip-float-label-field>
 
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="PASSWORD"
       [labelFor]="FieldsNames.Password"
@@ -39,7 +39,7 @@
         type="password"
         [formControlName]="FieldsNames.Password"
       >
-    </trip-field>
+    </trip-float-label-field>
 
     <p-button
       class="signin__form_submit"

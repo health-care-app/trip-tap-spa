@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'trip-field',
-  templateUrl: './field.component.html',
-  styleUrls: ['./field.component.scss'],
+  selector: 'trip-float-label-field',
+  templateUrl: './float-label-field.component.html',
+  styleUrls: ['./float-label-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FieldComponent {
+export class FloatLabelFieldComponent {
   @Input() public translationPath: string;
   @Input() public isVisible: boolean = true;
   @Input() public fieldClass: string = 'form-input';

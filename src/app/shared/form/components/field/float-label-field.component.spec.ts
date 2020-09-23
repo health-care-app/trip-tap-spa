@@ -6,14 +6,14 @@ import { MockComponent } from 'ng-mocks';
 import { TranslateTestingModule } from '@Specs/translate.spec';
 
 import { FieldErrorsComponent } from '../field-errors/field-errors.component';
-import { FieldComponent } from './field.component';
+import { FloatLabelFieldComponent } from './float-label-field.component';
 
-describe('FieldComponent', (): void => {
-  let component: FieldComponent;
-  let fixture: ComponentFixture<FieldComponent>;
+describe('FloatLabelFieldComponent', (): void => {
+  let component: FloatLabelFieldComponent;
+  let fixture: ComponentFixture<FloatLabelFieldComponent>;
 
   const initializeTestingComponent: (isVisible: boolean, fieldClass?: string) => void = (isVisible: boolean, fieldClass: string): void => {
-    fixture = TestBed.createComponent(FieldComponent);
+    fixture = TestBed.createComponent(FloatLabelFieldComponent);
     component = fixture.componentInstance;
     component.isVisible = isVisible;
     component.fieldClass = fieldClass;
@@ -27,7 +27,7 @@ describe('FieldComponent', (): void => {
         TranslateTestingModule,
       ],
       declarations: [
-        FieldComponent,
+        FloatLabelFieldComponent,
         MockComponent(FieldErrorsComponent),
       ],
     })
