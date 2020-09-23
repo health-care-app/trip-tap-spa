@@ -7,9 +7,8 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 
-import { FieldErrorsComponent } from '@Form/components/field-errors/field-errors.component';
-import { FieldComponent } from '@Form/components/field/field.component';
-import { ComponentsType, Module, ModulesType } from '@Types/module.types';
+import { FieldModule } from '@Form/modules/field.module';
+import { ComponentsType, ModulesType } from '@Types/module.types';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -17,18 +16,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AuthRepository } from './shared/auth-repository';
 import { AuthEffects } from './store/auth.effects';
 
-const sharedComponents: ComponentsType = [
-  FieldComponent,
-  FieldErrorsComponent,
-];
-
 const components: ComponentsType = [
-  ...sharedComponents,
   SignInComponent,
   SignUpComponent,
 ];
 
-const primeNgModules: Module[] = [
+const primeNgModules: ModulesType = [
   ButtonModule,
   CheckboxModule,
   InputTextModule,
@@ -36,6 +29,7 @@ const primeNgModules: Module[] = [
 
 const modules: ModulesType = [
   ...primeNgModules,
+  FieldModule,
   CommonModule,
   AuthRoutingModule,
   ReactiveFormsModule,

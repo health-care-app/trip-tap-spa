@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ModuleRoutes } from '@Enums/routes.enum';
+import { FieldModule } from '@Form/modules/field.module';
 import { ComponentsType, ModulesType } from '@Types/module.types';
 
 import { TripsListComponent } from './components/trips-list/trips-list.component';
@@ -21,6 +22,7 @@ const component: ComponentsType = [
 ];
 
 const modules: ModulesType = [
+  FieldModule,
   CommonModule,
   TripsRoutingModule,
   TranslateModule.forChild({}),

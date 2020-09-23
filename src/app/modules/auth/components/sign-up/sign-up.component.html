@@ -10,11 +10,12 @@
     [formGroup]="signUpForm"
     (submit)="signIn(signUpForm.value)"
   >
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="FIRST_NAME"
       [labelFor]="FieldsNames.FirstName"
       [formGroup]="signUpForm"
+      [isRequired]="true"
     >
       <input
         pInputText
@@ -24,13 +25,14 @@
         type="text"
         [formControlName]="FieldsNames.FirstName"
       >
-    </trip-field>
+    </trip-float-label-field>
 
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="LAST_NAME"
       [labelFor]="FieldsNames.LastName"
       [formGroup]="signUpForm"
+      [isRequired]="true"
     >
       <input
         pInputText
@@ -40,13 +42,14 @@
         type="text"
         [formControlName]="FieldsNames.LastName"
       >
-    </trip-field>
+    </trip-float-label-field>
 
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="EMAIL"
       [labelFor]="FieldsNames.Email"
       [formGroup]="signUpForm"
+      [isRequired]="true"
     >
       <input
         pInputText
@@ -56,13 +59,14 @@
         type="text"
         [formControlName]="FieldsNames.Email"
       >
-    </trip-field>
+    </trip-float-label-field>
 
-    <trip-field
+    <trip-float-label-field
       translationPath="AUTH.FIELDS"
       label="PASSWORD"
       [labelFor]="FieldsNames.Password"
       [formGroup]="signUpForm"
+      [isRequired]="true"
     >
       <input
         pInputText
@@ -71,9 +75,9 @@
         type="password"
         [formControlName]="FieldsNames.Password"
       >
-    </trip-field>
+    </trip-float-label-field>
 
-    <trip-field>
+    <trip-float-label-field>
       <p-checkbox
         binary="true"
         [label]="'AUTH.FIELDS.SIGN_UP_AS_TRIP_ORGANIZER' | translate"
@@ -82,7 +86,7 @@
         [formControlName]="FieldsNames.IsTripOrganizer"
       ></p-checkbox>
 
-    </trip-field>
+    </trip-float-label-field>
 
     <p-button
       class="signup__form_submit"
