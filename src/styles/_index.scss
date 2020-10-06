@@ -2,7 +2,8 @@
 @import './primeng/_index';
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: map-get($media-width, md);
 
   * { // sass-lint:disable-line no-universal-selectors
     font-family: map-get($fonts, main);
