@@ -2,9 +2,13 @@
   width: 100%;
 
   .form-field__label {
+    left: 4px;
     color: map-get($colors, trip-white);
     font-size: 15px;
-    left: 4px;
+
+    .create-trip & {
+      left: 0;
+    }
   }
 
   .ui-state-filled ~ .form-field__label,
@@ -13,13 +17,17 @@
   .ui-inputtext:focus ~ .form-field__label {
     top: 0;
     right: unset;
-    background-color: map-get($colors, transparent);
+    background-color: rgba(map-get($colors, trip-black), 0);
     color: map-get($colors, trip-white);
     font-size: 12px;
     font-weight: bold;
+
+    .create-trip & {
+      top: -2px;
+    }
   }
 
-  .ng-dirty.ng-invalid ~ .form-field__label {
-    color: map-get($colors, red-error);
+  .ng-dirty.ng-invalid ~ .form-field__label { // sass-lint:disable-line force-element-nesting
+    color: map-get($colors, error);
   }
 }

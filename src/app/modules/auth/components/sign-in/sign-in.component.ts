@@ -17,7 +17,7 @@ import { AuthFacade } from '../../store/auth.facade';
 export class SignInComponent implements OnInit {
   public signInForm: FormGroup = null;
 
-  public readonly FieldsNames: typeof FieldsNames = FieldsNames;
+  public readonly fieldsNames: typeof FieldsNames = FieldsNames;
   public readonly signInLink: string = `/${ModuleRoutes.Auth}/${AuthRoutes.SignUp}`;
 
   public constructor(

@@ -129,9 +129,6 @@ rules:
     - 2
   no-disallowed-properties:
     - 1
-    -
-      properties:
-        - z-index
   no-duplicate-properties:
     - 2
   no-empty-rulesets:

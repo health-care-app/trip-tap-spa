@@ -1,5 +1,12 @@
 {
   "APP": {
-    "TRIP_LOGO": "trip n tap logo"
+    "TRIP_LOGO": "trip n tap logo",
+    "ADD_YOUR_TEXT_HERE": "Add your text here",
+    "FILTER_DATA": "Filter {{ data }}",
+    "FILTER_OR_ADD_DATA": "Filter or add {{ data }}",
+    "NO_RESULTS": "No results found.",
+    "NO_RESULTS_PRESS_TO_ADD": "No results found press Enter to add new {{ data }}.",
+    "VALUE_HOURS": "{{ hours }} H",
+    "VALUE_MINUTES": "{{ minutes }} M"
   }
 }

@@ -18,6 +18,7 @@
       {{ errorsTranslationPath + '.MAX_LENGTH' | translate: {label: label, value: error.requiredLength} }}
     </div>
 
+
     <div *ngIf="errors[fieldErrors.Min]; let error">
       {{ errorsTranslationPath + '.MIN' | translate: {label: label, value: error.min} }}
     </div>
@@ -44,6 +45,13 @@
 
     <div *ngIf="errors[fieldErrors.CustomMessagePattern]; let error">
       {{  errorsTranslationPath + '.' + error | translate }}
+    </div>
+
+    <div *ngIf="errors[fieldErrors.MinHoursDuration]; let error">
+      {{ errorsTranslationPath + '.MIN_DURATION' | translate: {
+        label: label,
+        value: hourDuration
+      } }}
     </div>
   </div>
 </div>

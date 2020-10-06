@@ -17,7 +17,7 @@ import { AuthFacade } from '../../store/auth.facade';
 export class SignUpComponent implements OnInit {
   public signUpForm: FormGroup = null;
 
-  public readonly FieldsNames: typeof FieldsNames = FieldsNames;
+  public readonly fieldsNames: typeof FieldsNames = FieldsNames;
   public readonly signInLink: string = `/${ModuleRoutes.Auth}/${AuthRoutes.SignIn}`;
 
   public constructor(
@@ -28,6 +28,19 @@ export class SignUpComponent implements OnInit {
 
   public ngOnInit(): void {
     this.signUpForm = this.createSignUpForm();
+
+    this.signUpForm.get(FieldsNames.IsTripOrganizer).valueChanges
+      .subscribe((isTripOrganizer: boolean): void => {
+        if (isTripOrganizer) {
+          this.signUpForm.addControl(FieldsNames.PhoneNumber, this.formBuilder.control('', [ Validators.required ]));
+          this.signUpForm.addControl(FieldsNames.FacebookId, this.formBuilder.control(''));
+          this.signUpForm.addControl(FieldsNames.InstagramId, this.formBuilder.control(''));
+        } else {
+          this.signUpForm.removeControl(FieldsNames.PhoneNumber);
+          this.signUpForm.removeControl(FieldsNames.FacebookId);
+          this.signUpForm.removeControl(FieldsNames.InstagramId);
+        }
+      });
   }
 
   public signIn(signUpForm: SignUpCredentials): void {

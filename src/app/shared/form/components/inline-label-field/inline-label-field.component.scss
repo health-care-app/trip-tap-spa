@@ -1,0 +1,30 @@
+@import '_variables';
+
+:host {
+  &:not(:last-child) {
+    .inline-label-field {
+      margin-bottom: 16px;
+    }
+  }
+
+  .inline-label-field {
+    display: flex;
+    min-height: 40px;
+    color: map-get($colors, trip-white);
+
+    &__label {
+      display: inline-flex;
+      position: relative;
+      align-items: flex-start;
+      padding-top: 10px;
+      width: 50%;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    &__field {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+}

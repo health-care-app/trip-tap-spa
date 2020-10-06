@@ -1,3 +1,4 @@
+import { CreateTrip } from './create-trip.model';
 import { Trip } from './trip.model';
 
 export interface GetTripProps {
@@ -14,4 +15,8 @@ export interface TripProps {
 
 export interface TripsProps {
   trips: Trip[];
+}
+
+export interface CreateTripProps {
+  trip: CreateTrip;
 }

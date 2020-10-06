@@ -14,6 +14,7 @@ export class MultiTranslateLoader implements TranslateLoader {
     'app',
     'auth',
     'form',
+    'trip',
   ];
 
   public constructor(

@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 
 import { State } from '@Models/store.model';
 
+import { CreateTrip } from '../models/create-trip.model';
 import { Trip } from '../models/trip.model';
-import { getAllTrips, getTrip, setPendingState } from './trips.actions';
+import { createTrip, getAllTrips, getTrip, setPendingState } from './trips.actions';
 import { tripsSelectors } from './trips.selectors';
 
 @Injectable()
@@ -29,5 +30,9 @@ export class TripsFacade {
 
   public getTrip(tripId: number): void {
     this.store.dispatch(getTrip({tripId}));
+  }
+
+  public createTrip(trip: CreateTrip): void {
+    this.store.dispatch(createTrip({trip}));
   }
 }

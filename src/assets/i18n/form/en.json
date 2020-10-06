@@ -10,7 +10,8 @@
       "MIN": "{{ label }} must be greater than {{ value }}.",
       "MIN_LENGTH": "{{ label }} must be longer than {{ value }} characters.",
       "MUST_BE_INTEGER": "{{ label }} must be integer value.",
-      "MUST_BE_SAME": "{{ label }} must be same."
+      "MUST_BE_SAME": "{{ label }} must be same.",
+      "MIN_DURATION": "{{ label }} must be longer than {{ value }}."
     }
   }
 }

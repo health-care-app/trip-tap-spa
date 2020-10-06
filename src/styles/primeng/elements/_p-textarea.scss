@@ -1,0 +1,41 @@
+@import '_variables';
+
+.ui-inputtext {
+  &.form-field__textarea {
+    display: block;
+    border: 0;
+    border-radius: 43px;
+    box-shadow: 0 0 8px -6px map-get($colors, trip-black);
+    background-color: map-get($colors, popup);
+    padding: 10px 12px;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    color: map-get($colors, trip-white);
+    font-size: 15px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: rgb(159, 199, 177); // sass-lint:disable-line no-color-literals
+    }
+
+    &:enabled {
+      &:not(.ui-state-error) { // sass-lint:disable-line nesting-depth
+        &:focus,
+        &:hover {
+          border-color: map-get($colors, trip-white);
+          box-shadow: 0 0 8px -6px map-get($colors, trip-black);
+
+          &.ng-dirty.ng-invalid { // sass-lint:disable-line nesting-depth force-element-nesting
+            border-color: map-get($colors, error);
+          }
+        }
+      }
+    }
+
+    &.ng-dirty.ng-invalid { // sass-lint:disable-line force-element-nesting
+      border-color: map-get($colors, error);
+      color: map-get($colors, error);
+    }
+  }
+}

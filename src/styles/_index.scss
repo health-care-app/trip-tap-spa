@@ -1,0 +1,10 @@
+@import '_variables';
+@import './primeng/_index';
+
+body {
+  margin: 0;
+
+  * { // sass-lint:disable-line no-universal-selectors
+    font-family: map-get($fonts, main);
+  }
+}

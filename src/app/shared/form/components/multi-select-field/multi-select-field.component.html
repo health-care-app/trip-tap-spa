@@ -1,0 +1,42 @@
+<ng-container class="multiselect">
+  <p-multiSelect
+    class="form-field__multiselect"
+    styleClass="multi-select__container"
+    scrollHeight="150px"
+    [showToggleAll]="false"
+    [filter]="true"
+    filterBy="label,value.label,value.value"
+    [filterPlaceHolder]="canAddNew ? ('APP.FILTER_OR_ADD_DATA' | translate: {data: dataName.plural}) : ('APP.FILTER_DATA' | translate: {data: dataName.plural})"
+    [(ngModel)]="selectedOptions"
+    [options]="options"
+    [appendTo]="modal"
+    [emptyFilterMessage]="canAddNew ? ('APP.NO_RESULTS_PRESS_TO_ADD' | translate: {data: dataName.singular}) : ('APP.NO_RESULTS' | translate)"
+    (ngModelChange)="change()"
+    (onPanelShow)="onPanelShow()"
+    (onPanelHide)="onPanelHide()"
+  >
+    <ng-template let-selectedItems pTemplate="selectedItems">
+      <div
+        *ngFor="let selectedItem of selectedItems"
+        class="multiselect__selected-item"
+      >
+        <span class="multiselect__selected-item_text">
+          {{ labelPrefix }}{{ selectedItem.label }}
+        </span>
+
+        <p-button
+          class="multiselect__selected-item_button"
+          (onClick)="removeElement($event, selectedItem.value)"
+        >
+          <i class="pi pi-times"></i>
+        </p-button>
+      </div>
+    </ng-template>
+  </p-multiSelect>
+
+  <div
+    #modal
+    class="multiselect__modal"
+    [class.hidden]="!isOptionsPanelVisible"
+  ></div>
+</ng-container>

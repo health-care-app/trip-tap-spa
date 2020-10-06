@@ -5,10 +5,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ComponentsType, ModulesType } from '@Types/module.types';
 
 import { FieldErrorsComponent } from '../components/field-errors/field-errors.component';
-import { FloatLabelFieldComponent } from '../components/field/float-label-field.component';
+import { FloatLabelFieldComponent } from '../components/float-label-field/float-label-field.component';
+import { InlineLabelFieldComponent } from '../components/inline-label-field/inline-label-field.component';
 
 const components: ComponentsType = [
   FloatLabelFieldComponent,
+  InlineLabelFieldComponent,
   FieldErrorsComponent,
 ];
 

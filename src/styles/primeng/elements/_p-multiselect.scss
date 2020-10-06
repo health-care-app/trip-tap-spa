@@ -1,0 +1,125 @@
+.form-field__multiselect {
+  .ui-multiselect {
+    border: 0;
+    border-radius: 45px;
+    box-shadow: 0 0 8px -6px map-get($colors, trip-black);
+    background-color: map-get($colors, popup);
+    padding: 12px;
+    width: 100%;
+    min-height: 50px;
+
+    &:not(.ui-state-disabled) {
+      &.ui-state-focus {
+        border: 0;
+        box-shadow: 0 0 8px -6px map-get($colors, trip-black);
+      }
+    }
+
+    .ng-dirty.ng-invalid > & { // sass-lint:disable-line nesting-depth force-element-nesting
+      border: 1px solid map-get($colors, error);
+    }
+
+    .ui-multiselect-label {
+      padding: 0;
+      white-space: unset;
+    }
+  }
+
+  .ui-multiselect-trigger {
+    display: none;
+  }
+}
+
+.multiselect__modal {
+  .ui-multiselect-panel {
+    display: block !important; // sass-lint:disable-line no-important
+    position: fixed;
+    top: 50% !important; // sass-lint:disable-line no-important
+    left: 50% !important; // sass-lint:disable-line no-important
+    transform: translate(-50%, -50%) !important; // sass-lint:disable-line no-important
+    border: 0;
+    border-radius: 45px;
+    background-color: map-get($colors, popup);
+    padding: 20px;
+    min-width: 80vw !important; // sass-lint:disable-line no-important
+    overflow: scroll;
+
+    :not(:last-child) > .ui-multiselect-item  {
+      margin-bottom: 8px;
+    }
+
+    .ui-multiselect-header {
+      margin-bottom: 10px;
+      border: 0;
+      border-radius: 0;
+      background-color: rgba(map-get($colors, trip-black), 0);
+      padding: 0;
+
+      .ui-multiselect-filter-container {
+        width: calc(100% - 35px);
+        height: 35px;
+
+        .ui-inputtext {
+          border-width: 0 0 1px;
+          border-radius: 0;
+          border-color: map-get($colors, trip-white);
+          box-shadow: none;
+          background: rgba(map-get($colors, trip-black), 0);
+          padding: 0 4px;
+          height: 100%;
+          color: map-get($colors, trip-white);
+          font-size: 14px;
+
+          &::placeholder { // sass-lint:disable-line nesting-depth
+            color: map-get($colors, trip-white);
+          }
+        }
+
+        .ui-multiselect-filter-icon {
+          display: none;
+        }
+      }
+
+      .ui-multiselect-close {
+        color: map-get($colors, trip-white);
+        font-size: 13px;
+      }
+    }
+
+    .ui-multiselect-items-wrapper {
+      padding: 0;
+      max-height: 40vh !important; // sass-lint:disable-line no-important
+
+      .ui-multiselect-items {
+        .ui-multiselect-item {
+          border-radius: 12px;
+          background-color: map-get($colors, secondary);
+          color: map-get($colors, trip-white);
+
+          &:not(.ui-state-highlight) {
+            &:not(.ui-state-disabled) { // sass-lint:disable-line nesting-depth
+              &:hover { // sass-lint:disable-line nesting-depth
+                background-color: map-get($colors, secondary);
+                color: map-get($colors, trip-white);
+              }
+            }
+          }
+
+          &.ui-state-highlight {
+            display: none !important; // sass-lint:disable-line no-important
+          }
+
+          .ui-chkbox {
+            display: none;
+          }
+        }
+
+        .ui-multiselect-empty-message {
+          padding: 5px;
+          color: map-get($colors, trip-white);
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

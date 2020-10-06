@@ -36,7 +36,8 @@
       "@Guards/*": ["app/shared/guards/*"],
       "@Utils/*": ["app/core/utils/*"],
       "@Auth/*": ["app/modules/auth/*"],
-      "@Trips/*": ["app/modules/trips/*"]
+      "@Trips/*": ["app/modules/trips/*"],
+      "@Loaders/*": ["app/shared/loaders/*"]
     },
   },
   "angularCompilerOptions": {

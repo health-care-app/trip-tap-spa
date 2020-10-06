@@ -3,10 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TripsRoutes } from '@Enums/routes.enum';
 
+import { TripsCreateComponent } from './components/trips-create/trips-create.component';
 import { TripsListComponent } from './components/trips-list/trips-list.component';
 import { TripsViewComponent } from './components/trips-view/trips-view.component';
 
 const routes: Routes = [
+  {
+    path: TripsRoutes.Create,
+    component: TripsCreateComponent,
+  },
   {
     path: TripsRoutes.List,
     component: TripsListComponent,

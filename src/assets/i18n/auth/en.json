@@ -9,7 +9,10 @@
       "LAST_NAME": "Last Name",
       "EMAIL": "Email Address",
       "PASSWORD": "Password",
-      "SIGN_UP_AS_TRIP_ORGANIZER": "Sign up as a Trip Organizer"
+      "SIGN_UP_AS_TRIP_ORGANIZER": "Sign up as a Trip Organizer",
+      "PHONE_NUMBER": "Phone Number",
+      "FACEBOOK": "Facebook",
+      "INSTAGRAM": "Instagram"
     }
   }
 }
