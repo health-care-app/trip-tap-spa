@@ -14,11 +14,12 @@ import { MultiSelectFieldComponent } from '@Form/components/multi-select-field/m
 import { FieldsNames } from '@Form/enums/field-names.enum';
 import { CalendarLocale } from '@Models/calendar-locale.model';
 import { DropdownOption, MultiSelectOption, Option } from '@Models/option.model';
-import { CreateTrip } from '@Modules/trips/models/create-trip.model';
-import { TripsFacade } from '@Modules/trips/store/trips.facade';
 import { DurationService } from '@Services/duration.service';
 import { LocalizationService } from '@Services/localization.service';
 import { ValidatorsService } from '@Services/validators.service';
+
+import { CreateTrip } from '../../models/create-trip.model';
+import { TripsFacade } from '../../store/trips.facade';
 
 @Component({
   selector: 'trip-trips-create',
@@ -27,7 +28,6 @@ import { ValidatorsService } from '@Services/validators.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TripsCreateComponent implements OnInit {
-
   public selectedDates: string = '';
   public minDuration: number = 0.5;
   public maxDuration: number = 12;
@@ -62,7 +62,7 @@ export class TripsCreateComponent implements OnInit {
   public ngOnInit(): void {
     const newDuration: number = moment(this.endTimeMinDate).diff(moment(this.endTimeMinDate), 'hours', true);
 
-    this.createTripForm = this.createCreateTripForm();
+    this.createTripForm = this.initializeCreateTripForm();
     this.selectedLevelOption = this.getTripLevelOption();
 
     this.createTripForm.get(FieldsNames.Duration).valueChanges
@@ -134,7 +134,7 @@ export class TripsCreateComponent implements OnInit {
     this.calendar.hideOverlay();
   }
 
-  private createCreateTripForm(): FormGroup {
+  private initializeCreateTripForm(): FormGroup {
     return this.formBuilder.group({
       [FieldsNames.Image]: [ '', [ Validators.required ] ],
       [FieldsNames.Name]: [ '', [ Validators.required, Validators.pattern(REGEX.name) ] ],
