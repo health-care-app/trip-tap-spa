@@ -1,0 +1,22 @@
+// sass-lint:disable no-color-hex
+$colors: (
+  trip-black: #000000,
+  trip-white: #FFFFFF,
+  primary: #B3D19D,
+  secondary: #9FC7B1,
+  popup: #6F9580,
+  error: #D9000D,
+);
+
+$fonts: (
+  main: 'Axiforma',
+);
+
+$media-width: (
+  sm: 320px,
+  md-mobile: 400px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1480px,
+);

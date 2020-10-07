@@ -1,0 +1,33 @@
+{
+  "TRIP": {
+    "LOGO": "Trip Logo",
+    "ADD_TRIP": "Add Trip",
+    "TAG": "Tag",
+    "TAGS": "Tags",
+    "DONE": "Done",
+    "FIELDS": {
+      "NAME": "Name",
+      "LOCATION": "Location",
+      "TAGS": "Tags",
+      "PRICE": "Price",
+      "INCLUDING": "Including",
+      "DATES_AVAILABLE": "Dates available",
+      "TIME": "Time",
+      "FROM": "From",
+      "TO": "To",
+      "DURATION": "Duration",
+      "LEVEL": "Level",
+      "DOG_FRIENDLY": "Dog friendly",
+      "OTHER_COMMENTS": "Other comments",
+      "ADD_AMENITIES": "Add amenities",
+      "ADD_MATERIALS": "Add Materials",
+      "ADD_DESCRIPTION": "Add a Description"
+    },
+    "LEVELS": {
+      "EASY": "Easy",
+      "MODERATE": "Moderate",
+      "HARD": "Hard",
+      "ADVANCED": "Advanced"
+    }
+  }
+}

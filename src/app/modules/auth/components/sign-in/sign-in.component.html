@@ -1,0 +1,63 @@
+<div class="signin">
+  <img
+    class="signin__logo"
+    src="assets/images/logo-white.png"
+    [alt]="'APP.TRIP_LOGO' | translate"
+  />
+
+  <form
+    class="signin__form"
+    [formGroup]="signInForm"
+    (submit)="signIn(signInForm.value)"
+  >
+    <trip-float-label-field
+      translationPath="AUTH.FIELDS"
+      label="EMAIL"
+      [labelFor]="fieldsNames.Email"
+      [formGroup]="signInForm"
+    >
+      <input
+        pInputText
+        autocomplete="off"
+        [id]="fieldsNames.Email"
+        class="form-field__input"
+        type="text"
+        [formControlName]="fieldsNames.Email"
+      >
+    </trip-float-label-field>
+
+    <trip-float-label-field
+      translationPath="AUTH.FIELDS"
+      label="PASSWORD"
+      [labelFor]="fieldsNames.Password"
+      [formGroup]="signInForm"
+    >
+      <input
+        pInputText
+        [id]="fieldsNames.Password"
+        class="form-field__input"
+        type="password"
+        [formControlName]="fieldsNames.Password"
+      >
+    </trip-float-label-field>
+
+    <p-button
+      class="signin__form_submit"
+      styleClass="secondary signin"
+      type="submit"
+      [label]="'AUTH.SIGN_IN' | translate"
+      [disabled]="signInForm && signInForm.invalid"
+    ></p-button>
+  </form>
+
+  <label class="signin__not-user">
+    {{ 'AUTH.NOT_A_MEMBER' | translate }}
+
+    <a
+      class="signin__not-user_signup"
+      [routerLink]="[signInLink]"
+    >
+      {{ 'AUTH.SIGN_UP' | translate }}
+    </a>
+  </label>
+</div>

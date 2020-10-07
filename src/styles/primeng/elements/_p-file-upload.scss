@@ -1,0 +1,85 @@
+.ui-fileupload {
+  .form-field__upload & {
+    .create-trip & {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      .ui-fileupload-buttonbar {
+        border: 0;
+        padding: 0;
+
+        .ui-fileupload-choose { // sass-lint:disable-line nesting-depth
+          position: absolute;
+          margin: 0;
+          border: 0;
+          border-radius: 25%;
+          background-color: rgba(map-get($colors, trip-black), 0);
+          width: 100%;
+          height: 100%;
+
+          &.ui-state-focus { // sass-lint:disable-line nesting-depth
+            outline: 0;
+            box-shadow: none;
+          }
+
+          .ui-button-icon-left { // sass-lint:disable-line nesting-depth
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 36px;
+
+            &::before {
+              position: relative;
+              top: calc(50% - 18px);
+            }
+          }
+
+          .ui-button-text { // sass-lint:disable-line nesting-depth
+            display: none;
+          }
+
+          .pi-plus { // sass-lint:disable-line nesting-depth
+            display: none;
+          }
+        }
+      }
+
+      .ui-fileupload-content {
+        position: absolute;
+        border: 0;
+        border-radius: 25%;
+        background-color: rgba(map-get($colors, trip-white), 0.16);
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        .ui-progressbar { // sass-lint:disable-line nesting-depth
+          display: none;
+        }
+
+        .ui-fileupload-files { // sass-lint:disable-line nesting-depth
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+
+        .pi-plus { // sass-lint:disable-line nesting-depth
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          color: rgba(map-get($colors, primary), 47%);
+          font-size: 30px;
+
+          &::before {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,382 @@
+<div class="create-trip">
+  <img
+    class="create-trip__logo"
+    src="assets/images/logo-white.png"
+    [alt]="'APP.TRIP_LOGO' | translate"
+  />
+
+  <form
+    class="create-trip__form"
+    [formGroup]="createTripForm"
+    (submit)="createTrip(createTripForm.value)"
+  >
+    <div class="create-trip__form_main-details">
+      <p-fileUpload
+        class="create-trip__form_upload form-field__upload"
+        customUpload="true"
+        accept="image/jpg, image/png, image/jpeg"
+        [id]="fieldsNames.Image"
+        maxFileSize="2000000"
+        auto="true"
+        (uploadHandler)="upload($event.files)"
+      >
+        <ng-template pTemplate="content">
+          <span class="ui-clickable pi pi-plus"></span>
+        </ng-template>
+
+        <ng-template pTemplate="file" let-file>
+          <img
+            class="create-trip__form_upload_image"
+            [src]="file.objectURL"
+            [alt]="'TRIP.LOGO' | translate"
+          />
+        </ng-template>
+      </p-fileUpload>
+
+      <div class="create-trip__form_main-fields">
+        <trip-float-label-field
+          class="create-trip__form_name"
+          translationPath="TRIP.FIELDS"
+          label="NAME"
+          [labelFor]="fieldsNames.Name"
+          [formGroup]="createTripForm"
+        >
+          <input
+            pInputText
+            autocomplete="off"
+            [id]="fieldsNames.Name"
+            class="form-field__input"
+            type="text"
+            [formControlName]="fieldsNames.Name"
+          >
+        </trip-float-label-field>
+
+        <trip-float-label-field
+          class="create-trip__form_location"
+          translationPath="TRIP.FIELDS"
+          label="LOCATION"
+          [labelFor]="fieldsNames.Location"
+          [formGroup]="createTripForm"
+        >
+          <input
+            pInputText
+            autocomplete="off"
+            [id]="fieldsNames.Location"
+            class="form-field__input"
+            type="text"
+            [formControlName]="fieldsNames.Location"
+          >
+        </trip-float-label-field>
+      </div>
+    </div>
+
+    <div class="create-trip__form_tags">
+      <label
+        [for]="fieldsNames.Tags"
+        class="create-trip__form_tags_label"
+      >
+        {{ 'TRIP.FIELDS.TAGS' | translate }}
+      </label>
+
+      <div class="create-trip__form_tags_field">
+        <trip-multi-select-field
+          labelPrefix="#"
+          [canAddNew]="true"
+          [formControlName]="fieldsNames.Tags"
+          [options]="tagOptions"
+          [dataName]="{
+            singular: 'TRIP.TAG' | translate | lowercase,
+            plural: 'TRIP.TAGS' | translate | lowercase
+          }"
+        ></trip-multi-select-field>
+
+        <trip-field-errors
+          *ngIf="createTripForm"
+          [label]="'TRIP.FIELDS.TAGS' | translate"
+          [fieldControl]="createTripForm.controls[fieldsNames.Tags]"
+        ></trip-field-errors>
+      </div>
+    </div>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="PRICE"
+      [labelFor]="fieldsNames.Price"
+      [formGroup]="createTripForm"
+    >
+      <div class="create-trip__form_price_container">
+        <input
+          pInputText
+          autocomplete="off"
+          [id]="fieldsNames.Price"
+          class="form-field__input create-trip__form_price"
+          type="number"
+          [formControlName]="fieldsNames.Price"
+        >
+
+        <p-dropdown
+          class="form-field__dropdown create-trip__form_price_currency"
+          [options]="currencyOptions"
+          [id]="fieldsNames.Currency"
+          [formControlName]="fieldsNames.Currency"
+          [autoDisplayFirst]="true"
+        ></p-dropdown>
+      </div>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="INCLUDING"
+      [labelFor]="fieldsNames.Including"
+      [formGroup]="createTripForm"
+    >
+      <textarea
+        pInputTextarea
+        class="form-field__textarea"
+        autoResize="true"
+        [id]="fieldsNames.Including"
+        [formControlName]="fieldsNames.Including"
+        [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
+        rows="1"
+      ></textarea>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="DATES_AVAILABLE"
+      [labelFor]="fieldsNames.AvailableDates"
+      [formGroup]="createTripForm"
+      fieldClass="create-trip__form_available-dates"
+    >
+      <div class="calendar__container">
+        <span class="pi pi-play"></span>
+
+        <p-calendar
+          [formControlName]="fieldsNames.AvailableDates"
+          selectionMode="multiple"
+          [readonlyInput]="true"
+          [touchUI]="true"
+          [minDate]="availableDatesMinDate"
+          [locale]="calendarLocale"
+          (onClose)="onCalendarClose()"
+          class="calendar form-field__calendar"
+        >
+          <ng-template pTemplate="disabledDate" let-date>
+            <label class="create-trip__form_available-dates_date">
+              {{ date.day }}
+            </label>
+          </ng-template>
+
+          <ng-template pTemplate="date" let-date>
+            <label class="create-trip__form_available-dates_date">
+              {{ date.day }}
+            </label>
+          </ng-template>
+
+          <p-footer class="calendar__footer">
+            <p-button
+              class="calendar__footer_done"
+              styleClass="primary create-trip-calendar-done"
+              type="button"
+              [label]="'TRIP.DONE' | translate"
+              (onClick)="closeCalendar()"
+            ></p-button>
+          </p-footer>
+        </p-calendar>
+
+        <span class="create-trip__form_available-dates_selected-date">
+          {{ selectedDates }}
+        </span>
+      </div>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      label="TIME"
+      translationPath="TRIP.FIELDS"
+    >
+      <div class="create-trip__form_time_container">
+        <trip-float-label-field
+          class="create-trip__form_time_from"
+          translationPath="TRIP.FIELDS"
+          label="FROM"
+          [labelFor]="fieldsNames.StartTime"
+          [formGroup]="createTripForm"
+        >
+          <p-calendar
+            [id]="fieldsNames.StartTime"
+            [formControlName]="fieldsNames.StartTime"
+            [readonlyInput]="true"
+            [touchUI]="true"
+            [timeOnly]="true"
+            [hourFormat]="12"
+            [stepMinute]="30"
+            [minDate]="startTimeMinDate"
+            [maxDate]="startTimeMaxDate"
+            [locale]="calendarLocale"
+            (onClose)="onFromTimeClose()"
+            class="form-field__calendar_time"
+          ></p-calendar>
+        </trip-float-label-field>
+
+        <trip-float-label-field
+          class="create-trip__form_time_to"
+          translationPath="TRIP.FIELDS"
+          label="TO"
+          [labelFor]="fieldsNames.EndTime"
+          [formGroup]="createTripForm"
+        >
+          <p-calendar
+            [id]="fieldsNames.EndTime"
+            [formControlName]="fieldsNames.EndTime"
+            [readonlyInput]="true"
+            [touchUI]="true"
+            [timeOnly]="true"
+            [hourFormat]="12"
+            [stepMinute]="30"
+            [minDate]="endTimeMinDate"
+            [maxDate]="endTimeMaxDate"
+            [locale]="calendarLocale"
+            class="form-field__calendar_time"
+            (onClose)="onToTimeClose()"
+          ></p-calendar>
+        </trip-float-label-field>
+      </div>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="DURATION"
+      [labelFor]="fieldsNames.Duration"
+      [formGroup]="createTripForm"
+      addToLabel=": {{ selectedDuration }}"
+    >
+      <p-slider
+        class="form-field__single-slider"
+        [id]="fieldsNames.Duration"
+        [formControlName]="fieldsNames.Duration"
+        [min]="0"
+        [max]="maxDuration"
+        [step]="0.5"
+        (onChange)="onDurationChange()"
+      ></p-slider>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="LEVEL"
+      [labelFor]="fieldsNames.Level"
+      [formGroup]="createTripForm"
+      addToLabel=": {{ selectedLevelOption.label | translate }}"
+    >
+      <p-slider
+        class="form-field__single-slider"
+        [id]="fieldsNames.Level"
+        [formControlName]="fieldsNames.Level"
+        [min]="0"
+        [max]="tripLevelOptions.length - 1"
+        [step]="1"
+        (onChange)="onLevelChange()"
+      ></p-slider>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="DOG_FRIENDLY"
+      [labelFor]="fieldsNames.DogFriendly"
+      [formGroup]="createTripForm"
+    >
+      <p-checkbox
+        binary="true"
+        [id]="fieldsNames.DogFriendly"
+        class="form-field__checkbox"
+        [formControlName]="fieldsNames.DogFriendly"
+      ></p-checkbox>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="OTHER_COMMENTS"
+      [labelFor]="fieldsNames.Comments"
+      [formGroup]="createTripForm"
+    >
+      <textarea
+        pInputTextarea
+        class="form-field__textarea"
+        autoResize="true"
+        [id]="fieldsNames.Comments"
+        [formControlName]="fieldsNames.Comments"
+        [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
+        rows="1"
+      ></textarea>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="ADD_AMENITIES"
+      [labelFor]="fieldsNames.Amenities"
+      [formGroup]="createTripForm"
+    >
+      <textarea
+        pInputTextarea
+        class="form-field__textarea"
+        autoResize="true"
+        [id]="fieldsNames.Amenities"
+        [formControlName]="fieldsNames.Amenities"
+        [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
+        rows="1"
+      ></textarea>
+    </trip-inline-label-field>
+
+    <trip-inline-label-field
+      translationPath="TRIP.FIELDS"
+      label="ADD_MATERIALS"
+      [labelFor]="fieldsNames.Materials"
+      [formGroup]="createTripForm"
+    >
+      <textarea
+        pInputTextarea
+        class="form-field__textarea"
+        autoResize="true"
+        [id]="fieldsNames.Materials"
+        [formControlName]="fieldsNames.Materials"
+        [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
+        rows="1"
+      ></textarea>
+    </trip-inline-label-field>
+
+    <div class="create-trip__form_description">
+      <label
+        [for]="fieldsNames.Description"
+        class="create-trip__form_description_label"
+      >
+        {{ 'TRIP.FIELDS.ADD_DESCRIPTION' | translate }}
+      </label>
+
+      <div class="create-trip__form_description_field">
+        <textarea
+          pInputTextarea
+          class="form-field__textarea"
+          autoResize="true"
+          [id]="fieldsNames.Description"
+          [formControlName]="fieldsNames.Description"
+          [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
+          rows="1"
+        ></textarea>
+
+        <trip-field-errors
+          *ngIf="createTripForm"
+          [label]="'TRIP.FIELDS.ADD_DESCRIPTION' | translate"
+          [fieldControl]="createTripForm.controls[fieldsNames.Description]"
+        ></trip-field-errors>
+      </div>
+    </div>
+
+    <p-button
+      class="create-trip__form_submit"
+      styleClass="primary create-trip"
+      type="submit"
+      [label]="'TRIP.ADD_TRIP' | translate"
+      [disabled]="createTripForm && createTripForm.invalid"
+    ></p-button>
+  </form>
+</div>

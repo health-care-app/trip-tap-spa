@@ -1,0 +1,21 @@
+<div *ngIf="isVisible" class="form-item">
+  <div class="form-field {{ fieldClass }}">
+    <span class="ui-float-label">
+      <ng-content></ng-content>
+
+      <label
+        *ngIf="label"
+        [for]="labelFor"
+        class="form-field__label"
+      >
+        {{ translationPath + '.' + label | translate }}{{ isRequired ? '*' : '' }}
+      </label>
+    </span>
+
+    <trip-field-errors
+      *ngIf="formGroup && label.length > 0"
+      [label]="translationPath + '.' + label | translate"
+      [fieldControl]="formGroup.controls[labelFor]"
+    ></trip-field-errors>
+  </div>
+</div>

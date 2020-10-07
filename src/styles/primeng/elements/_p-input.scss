@@ -1,0 +1,39 @@
+.form-field__input {
+  &.ui-inputtext {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    border-color: map-get($colors, trip-white);
+    background-color: rgba(map-get($colors, trip-black), 0);
+    padding: 0 4px;
+    width: 100%;
+    height: 40px;
+    color: map-get($colors, trip-white);
+    font-size: 15px;
+
+    .create-trip & {
+      padding: 0;
+      height: 28px;
+    }
+
+    &:enabled {
+      &:not(.ui-state-error) {
+        &:focus,
+        &:hover {
+          border-color: map-get($colors, trip-white);
+          box-shadow: none;
+
+          &.ng-dirty.ng-invalid { // sass-lint:disable-line nesting-depth force-element-nesting
+            border-color: map-get($colors, error);
+          }
+        }
+      }
+    }
+
+    &.ng-dirty.ng-invalid { // sass-lint:disable-line force-element-nesting
+      border-width: 0 0 1px;
+      border-color: map-get($colors, error);
+      color: map-get($colors, error);
+    }
+  }
+}

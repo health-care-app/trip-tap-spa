@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,7 +14,31 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@AppStore": ["app/app.store"],
+      "@Components/*": ["app/shared/components/*"],
+      "@Consts/*": ["app/shared/consts/*"],
+      "@Enums/*": ["app/shared/enums/*"],
+      "@Environment": ["environments/environment"],
+      "@Form/*": ["app/shared/form/*"],
+      "@Store/*": ["app/shared/store/*"],
+      "@Helpers/*": ["app/core/helpers/*"],
+      "@Interceptors/*": ["app/shared/interceptors/*"],
+      "@Mocks/*": ["app/shared/mocks/*"],
+      "@Models/*": ["app/shared/models/*"],
+      "@Types/*": ["app/shared/types/*"],
+      "@Providers/*": ["app/shared/providers/*"],
+      "@Services/*": ["app/shared/services/*"],
+      "@Modules/*": ["app/modules/*"],
+      "@Pipes/*": ["app/shared/pipes/*"],
+      "@Specs/*": ["app/specs/*"],
+      "@Guards/*": ["app/shared/guards/*"],
+      "@Utils/*": ["app/core/utils/*"],
+      "@Auth/*": ["app/modules/auth/*"],
+      "@Trips/*": ["app/modules/trips/*"],
+      "@Loaders/*": ["app/shared/loaders/*"]
+    },
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

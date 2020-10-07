@@ -23,11 +23,19 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,5 +132,23 @@
         }
       }
     }},
-  "defaultProject": "trip-tap-spa"
+  "defaultProject": "trip-tap-spa",
+  "schematics": {
+    "@schematics/angular:class": {
+      "skipTests": false
+    },
+    "@schematics/angular:component": {
+      "prefix": "trip",
+      "export": true,
+      "lintFix": true,
+      "style": "scss",
+      "changeDetection": "OnPush"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "trip"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

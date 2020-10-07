@@ -1,0 +1,51 @@
+.form-field__checkbox {
+  .inline-label-field & {
+    display: block;
+    margin-top: 7px;
+  }
+
+  .ui-chkbox {
+    width: fit-content;
+    height: fit-content;
+
+    .ui-chkbox-box {
+      border: 0;
+      border-radius: 8px;
+      width: 26px;
+      height: 26px;
+
+      &.ui-state-focus {
+        outline: 0;
+        box-shadow: none;
+      }
+
+      &.ui-state-active {
+        &:not(.ui-state-disabled),
+        &:not(.ui-state-disabled):hover {
+          border: 0;
+          background-color: map-get($colors, trip-white);
+          padding: 3px;
+        }
+
+        .ui-chkbox-icon {
+          border-radius: 6px;
+          background-color: map-get($colors, primary);
+          width: 20px;
+          height: 20px;
+          font-size: 18px;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ui-chkbox-label {
+    display: inline-flex;
+    align-items: center;
+    color: map-get($colors, trip-white);
+    font-size: 15px;
+  }
+}
