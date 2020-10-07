@@ -14,4 +14,5 @@ export enum TripsRoutes {
   Root = '',
   Id = ':id',
   List = 'list',
+  Create = 'create',
 }

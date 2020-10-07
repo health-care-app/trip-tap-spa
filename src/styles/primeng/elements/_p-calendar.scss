@@ -1,0 +1,141 @@
+.create-trip {
+  .form-field__calendar {
+    .ui-calendar {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      .ui-inputtext {
+        display: block;
+        opacity: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .ui-datepicker {
+        border: 0;
+        border-radius: 43px;
+        background-color: map-get($colors, popup);
+        padding: 20px;
+        overflow: hidden;
+        color: map-get($colors, trip-white);
+      }
+
+      .ui-datepicker-header {
+        background-color: rgba(map-get($colors, trip-black), 0);
+        color: map-get($colors, trip-white);
+      }
+
+      .ui-datepicker-prev {
+        color: map-get($colors, trip-white);
+      }
+
+      .ui-datepicker-next {
+        color: map-get($colors, trip-white);
+      }
+
+      td {
+        position: relative;
+        margin: 2.5px;
+        padding: 0;
+        width: calc(100% / 7);
+        border-spacing: 2.5px;
+        text-align: center;
+
+        &::after {
+          display: block;
+          padding-bottom: 100%;
+          content: '';
+        }
+
+        .ui-state-default {
+          position: absolute;
+          top: 2.5px;
+          left: 2.5px;
+          border-radius: 25%;
+          background-color: map-get($colors, secondary);
+          padding: 0;
+          width: calc(100% - 5px);
+          height: calc(100% - 5px);
+          color: map-get($colors, trip-white);
+          font-size: 12px;
+        }
+
+        .ui-state-disabled {
+          background-color: rgba(map-get($colors, secondary), 0.5);
+        }
+
+        .ui-state-active {
+          background-color: map-get($colors, primary);
+        }
+      }
+    }
+
+    &_time {
+      .ui-calendar {
+        width: 100%;
+
+        .ui-inputtext {
+          border-width: 0 0 1px;
+          border-radius: 0;
+          border-color: map-get($colors, trip-white);
+          background-color: rgba(map-get($colors, trip-black), 0);
+          padding: 0;
+          width: 100%;
+          height: 28px;
+          color: map-get($colors, trip-white);
+          font-size: 14px;
+
+          &:enabled {
+            &:not(.ui-state-error) { // sass-lint:disable-line nesting-depth
+              &:hover { // sass-lint:disable-line nesting-depth
+                border-color: map-get($colors, trip-white);
+              }
+
+              &:focus { // sass-lint:disable-line nesting-depth
+                border-color: map-get($colors, trip-white);
+                box-shadow: none;
+              }
+            }
+          }
+        }
+
+        .ui-datepicker {
+          border: 0;
+          box-shadow: none;
+          background-color: rgba(map-get($colors, trip-black), 0);
+
+          .ui-hour-picker {
+            margin: 0;
+          }
+
+          .ui-separator {
+            width: 20px;
+          }
+
+          .ui-ampm-picker {
+            margin-left: 40px;
+          }
+
+          .pi-chevron-up {
+            color: map-get($colors, trip-white);
+          }
+
+          .pi-chevron-down {
+            color: map-get($colors, trip-white);
+          }
+        }
+
+        .ui-timepicker {
+          border: 0;
+          border-radius: 43px;
+          background-color: map-get($colors, popup);
+          padding: 20px;
+          overflow: hidden;
+          color: map-get($colors, trip-white);
+        }
+      }
+    }
+  }
+}

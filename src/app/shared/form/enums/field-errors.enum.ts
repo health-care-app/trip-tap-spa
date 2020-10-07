@@ -9,4 +9,5 @@ export enum FieldErrors {
   MinLength = 'minlength',
   Pattern = 'pattern',
   Required = 'required',
+  MinHoursDuration = 'minHoursDuration',
 }

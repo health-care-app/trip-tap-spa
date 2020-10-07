@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiUrls } from '@Enums/api-urls.enum';
 import { environment } from '@Environment';
 
+import { CreateTrip } from '../models/create-trip.model';
 import { Trip } from '../models/trip.model';
 
 @Injectable()
@@ -34,5 +35,12 @@ export class TripsRepository {
 
   public getTrip(tripId: number): Observable<Trip> {
     return this.httpClient.get<Trip>(`${environment.apiUrl}/${ApiUrls.Trips}/${tripId}`);
+  }
+
+  public createTrip(trip: CreateTrip): Observable<Trip> {
+    return this.httpClient.post<Trip>(
+      `${environment.apiUrl}/${ApiUrls.Trips}`,
+      trip,
+    );
   }
 }

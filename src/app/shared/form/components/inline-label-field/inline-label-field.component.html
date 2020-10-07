@@ -1,0 +1,19 @@
+<div class="inline-label-field {{ fieldClass }}">
+  <label
+    *ngIf="label"
+    [for]="labelFor"
+    class="inline-label-field__label"
+  >
+    {{ translationPath + '.' + label | translate }}{{ isRequired ? '*' : '' }}{{ addToLabel }}
+  </label>
+
+  <div class="inline-label-field__field">
+    <ng-content></ng-content>
+
+    <trip-field-errors
+      *ngIf="formGroup && label.length > 0"
+      [label]="translationPath + '.' + label | translate"
+      [fieldControl]="formGroup.controls[labelFor]"
+    ></trip-field-errors>
+  </div>
+</div>

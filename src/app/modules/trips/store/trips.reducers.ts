@@ -3,7 +3,16 @@ import { ActionReducer, createReducer, on } from '@ngrx/store';
 import { SetPendingActionType } from '@Types/pending-action.types';
 
 import { GetTripsListSuccessActionType, GetTripSuccessActionType } from '../types/action.types';
-import { getAllTrips, getAllTripsSuccess, getTrip, getTripSuccess, setPendingState, TripsActionsTypes } from './trips.actions';
+import {
+  createTrip,
+  createTripSuccess,
+  getAllTrips,
+  getAllTripsSuccess,
+  getTrip,
+  getTripSuccess,
+  setPendingState,
+  TripsActionsTypes,
+} from './trips.actions';
 import { TripsState } from './trips.state';
 
 export const tripsInitialState: TripsState = {
@@ -20,6 +29,7 @@ export const tripsReducer: ActionReducer<TripsState> = createReducer(
   })),
   on(
     getTrip,
+    createTrip,
     getAllTrips,
     (state: TripsState): TripsState => ({
       ...state,
@@ -30,8 +40,12 @@ export const tripsReducer: ActionReducer<TripsState> = createReducer(
     ...state,
     list: action.trips,
   })),
-  on(getTripSuccess, (state: TripsState, action: GetTripSuccessActionType): TripsState => ({
-    ...state,
-    single: action.trip,
-  })),
+  on(
+    getTripSuccess,
+    createTripSuccess,
+    (state: TripsState, action: GetTripSuccessActionType): TripsState => ({
+      ...state,
+      single: action.trip,
+    }),
+  ),
 );

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomePageComponent } from '@Components/home-page/home-page.component';
 import { ModuleRoutes } from '@Enums/routes.enum';
 import { AccessGuard } from '@Guards/access.guard';
 import { AuthGuard } from '@Guards/auth.guard';
@@ -22,7 +23,7 @@ const routes: Routes = [
   {
     path: ModuleRoutes.Root,
     pathMatch: 'full',
-    redirectTo: ModuleRoutes.Auth,
+    component: HomePageComponent,
   },
 ];
 

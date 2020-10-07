@@ -1,0 +1,36 @@
+.form-field__single-slider {
+  display: flex;
+  position: relative;
+  left: 10px;
+  align-items: center;
+  width: calc(100% - 20px);
+  height: 100%;
+
+  .ui-slider {
+    width: 100%;
+
+    &.ui-slider-horizontal {
+      position: relative;
+      top: 1px;
+      background-color: map-get($colors, popup);
+      height: 6px;
+
+      .ui-slider-handle {
+        transform: translate(-50%, -50%);
+        margin: 0;
+        border: 0;
+        border-radius: 7px;
+        width: 20px;
+        height: 20px;
+
+        &:focus { // sass-lint:disable-line nesting-depth
+          box-shadow: none;
+        }
+      }
+    }
+
+    .ui-slider-range {
+      background-color: map-get($colors, trip-white);
+    }
+  }
+}

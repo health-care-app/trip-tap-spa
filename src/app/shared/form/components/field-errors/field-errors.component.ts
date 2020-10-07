@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 import { AbstractControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
+import { DurationService } from '@Services/duration.service';
+
 import { FieldErrors } from '../../enums/field-errors.enum';
 
 @Component({
@@ -11,6 +13,9 @@ import { FieldErrors } from '../../enums/field-errors.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldErrorsComponent implements OnDestroy {
+  public get hourDuration(): string {
+    return this.durationService.getHourDuration(this.control.errors[FieldErrors.MinHoursDuration][FieldErrors.MinHoursDuration]);
+  }
   public get fieldControl(): AbstractControl {
     return this.control;
   }
@@ -36,6 +41,7 @@ export class FieldErrorsComponent implements OnDestroy {
   private controlValueChangeSubscription: Subscription;
 
   public constructor(
+    private readonly durationService: DurationService,
     private readonly changeDetectorRef: ChangeDetectorRef,
   ) {
   }

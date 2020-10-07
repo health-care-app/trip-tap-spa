@@ -4,7 +4,7 @@ import { createAction, props } from '@ngrx/store';
 import { PendingProps } from '@Models/pending-props.model';
 import { ActionCreatorPropsType } from '@Types/action.types';
 
-import { GetTripProps, GetTripsListProps, TripProps, TripsProps } from '../models/action-props.model';
+import { CreateTripProps, GetTripProps, GetTripsListProps, TripProps, TripsProps } from '../models/action-props.model';
 
 export enum TripsActionsTypes {
   Pending = '[Trips] PENDING',
@@ -14,6 +14,9 @@ export enum TripsActionsTypes {
 
   GetTrip = '[Trips] GET_TRIP',
   GetTripSuccess = '[Trips] GET_TRIP_SUCCESS',
+
+  CreateTrip = '[Trips] CREATE_TRIP',
+  CreateTripSuccess = '[Trips] CREATE_TRIP_SUCCESS',
 }
 
 export const setPendingState: ActionCreatorPropsType<TripsActionsTypes.Pending, PendingProps> = createAction(TripsActionsTypes.Pending, props<PendingProps>());
@@ -23,3 +26,6 @@ export const getAllTripsSuccess: ActionCreatorPropsType<TripsActionsTypes.GetTri
 
 export const getTrip: ActionCreatorPropsType<TripsActionsTypes.GetTrip, GetTripProps> = createAction(TripsActionsTypes.GetTrip, props<GetTripProps>());
 export const getTripSuccess: ActionCreatorPropsType<TripsActionsTypes.GetTripSuccess, TripProps> = createAction(TripsActionsTypes.GetTripSuccess, props<TripProps>());
+
+export const createTrip: ActionCreatorPropsType<TripsActionsTypes.CreateTrip, CreateTripProps> = createAction(TripsActionsTypes.CreateTrip, props<CreateTripProps>());
+export const createTripSuccess: ActionCreatorPropsType<TripsActionsTypes.CreateTripSuccess, TripProps> = createAction(TripsActionsTypes.CreateTripSuccess, props<TripProps>());
