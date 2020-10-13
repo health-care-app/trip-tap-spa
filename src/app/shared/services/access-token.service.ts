@@ -45,10 +45,6 @@ export class AccessTokenService {
   public getAccessToken(): string {
     const accessToken: string = this.cookieService.get(TokenKeys.JwtCookie);
 
-    if (!accessToken) {
-      this.router.navigate([ModuleRoutes.Auth, AuthRoutes.SignIn]);
-    }
-
     return accessToken;
   }
 }

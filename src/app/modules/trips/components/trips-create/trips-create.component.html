@@ -329,16 +329,16 @@
 
     <trip-inline-label-field
       translationPath="TRIP.FIELDS"
-      label="ADD_MATERIALS"
-      [labelFor]="fieldsNames.Materials"
+      label="ADD_MATERIAL"
+      [labelFor]="fieldsNames.Material"
       [formGroup]="createTripForm"
     >
       <textarea
         pInputTextarea
         class="form-field__textarea"
         autoResize="true"
-        [id]="fieldsNames.Materials"
-        [formControlName]="fieldsNames.Materials"
+        [id]="fieldsNames.Material"
+        [formControlName]="fieldsNames.Material"
         [placeholder]="'APP.ADD_YOUR_TEXT_HERE' | translate"
         rows="1"
       ></textarea>

@@ -1,0 +1,42 @@
+<div class="trips-list">
+  <label class="trips-list__label">
+    {{ 'TRIP.SUGGESTED_TRIPS' | translate }}
+  </label>
+
+  <div
+    class="trips-list__trip"
+    *ngFor="let trip of tripList"
+  >
+    <img
+      class="trips-list__trip_image"
+      [src]="trip.image"
+      [alt]="'TRIP.LOGO' | translate"
+    />
+
+    <div class="trips-list__trip_data">
+      <label class="trips-list__trip_name">
+        {{ trip.name }}
+      </label>
+
+      <label class="trips-list__trip_organizer">
+        {{ trip.user.name }}
+      </label>
+
+      <div class="trips-list__trip_tags">
+        <span
+          class="trips-list__trip_tag"
+          *ngFor="let tag of trip.tags"
+        >
+          #{{ tag }}
+        </span>
+      </div>
+
+      <a
+        class="trips-list__trip_link"
+        [routerLink]="['..', trip.id]"
+      >
+        {{ 'TRIP.MORE_INFO' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
