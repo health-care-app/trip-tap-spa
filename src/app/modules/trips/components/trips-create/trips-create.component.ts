@@ -127,7 +127,12 @@ export class TripsCreateComponent implements OnInit {
   }
 
   public createTrip(createTripForm: CreateTrip): void {
-    this.tripsFacade.createTrip(createTripForm);
+    this.tripsFacade.createTrip({
+      ...createTripForm,
+      level: TRIP_LEVEL_OPTIONS[createTripForm.level].value,
+      startTime: moment(createTripForm.startTime).unix(),
+      availableDates: createTripForm.availableDates.map((availableDate: number): number => moment(availableDate).unix()),
+    });
   }
 
   public closeCalendar(): void {
@@ -151,7 +156,7 @@ export class TripsCreateComponent implements OnInit {
       [FieldsNames.DogFriendly]: [ false ],
       [FieldsNames.Comments]: [ '' ],
       [FieldsNames.Amenities]: [ '' ],
-      [FieldsNames.Materials]: [ '' ],
+      [FieldsNames.Material]: [ '' ],
       [FieldsNames.Description]: [ '' ],
     });
   }
