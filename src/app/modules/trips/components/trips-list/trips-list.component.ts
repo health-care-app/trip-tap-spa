@@ -16,6 +16,7 @@ import { TripsFacade } from '../../store/trips.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TripsListComponent implements OnInit {
+  public tripList: Trip[] = [];
 
   public constructor(
     private readonly authFacade: AuthFacade,
@@ -40,6 +41,8 @@ export class TripsListComponent implements OnInit {
         }),
         switchMap((): Observable<Trip[]> => this.tripsFacade.tripsList$),
       )
-      .subscribe();
+      .subscribe((trips: Trip[]): void => {
+        this.tripList = trips;
+      });
   }
 }

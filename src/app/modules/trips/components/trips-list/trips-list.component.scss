@@ -1,0 +1,89 @@
+@import '_variables';
+
+:host {
+  display: block;
+  background-image: url('assets/images/default-bg.png');
+  background-size: cover;
+  height: 100vh;
+  overflow-y: scroll;
+
+  .trips-list {
+    margin: 0 auto 50px;
+    padding-top: 75px;
+    width: calc(100% - 50px);
+
+    &__label {
+      display: block;
+      margin: 0 auto 24px;
+      width: 80%;
+      color: map-get($colors, trip-white);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &__trip {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 35px;
+      }
+
+      &_image {
+        border-radius: 24px;
+        width: 45%;
+      }
+
+      &_data {
+        padding-left: 16px;
+      }
+
+      &_name {
+        display: block;
+        margin-bottom: 2px;
+        color: map-get($colors, trip-white);
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      &_organizer {
+        display: block;
+        color: map-get($colors, trip-white);
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      &_tags {
+        margin-bottom: 8px;
+        max-height: 25px;
+        overflow: hidden;
+      }
+
+      &_tag {
+        display: inline-block;
+        border-radius: 16px;
+        background-color: map-get($colors, primary);
+        padding: 0 8px;
+        height: 16px;
+        text-transform: lowercase;
+        color: map-get($colors, trip-white);
+        font-size: 10px;
+
+        &:not(:last-child) {
+          margin-right: 4px;
+        }
+      }
+
+      &_link {
+        display: block;
+        border-radius: 6px;
+        background-color: map-get($colors, primary);
+        padding: 2px 8px;
+        width: fit-content;
+        height: 20px;
+        text-decoration: none;
+        color: map-get($colors, trip-white);
+        font-size: 12px;
+      }
+    }
+  }
+}

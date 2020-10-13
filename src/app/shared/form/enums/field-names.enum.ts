@@ -22,6 +22,6 @@ export enum FieldsNames {
   DogFriendly = 'dogFriendly',
   Comments = 'comments',
   Amenities = 'amenities',
-  Materials = 'materials',
+  Material = 'material',
   Description = 'description',
 }

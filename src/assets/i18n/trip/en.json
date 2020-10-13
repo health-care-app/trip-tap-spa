@@ -5,6 +5,8 @@
     "TAG": "Tag",
     "TAGS": "Tags",
     "DONE": "Done",
+    "MORE_INFO": "More Info",
+    "SUGGESTED_TRIPS": "Suggested trips",
     "FIELDS": {
       "NAME": "Name",
       "LOCATION": "Location",
@@ -20,7 +22,7 @@
       "DOG_FRIENDLY": "Dog friendly",
       "OTHER_COMMENTS": "Other comments",
       "ADD_AMENITIES": "Add amenities",
-      "ADD_MATERIALS": "Add Materials",
+      "ADD_MATERIAL": "Add Material",
       "ADD_DESCRIPTION": "Add a Description"
     },
     "LEVELS": {

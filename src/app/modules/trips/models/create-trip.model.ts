@@ -9,9 +9,10 @@ export interface CreateTrip {
   price: number;
   currency: Currencies;
   including: string;
+  startTime: number;
   duration: number;
   level: TripLevels;
-  availableDates: string[];
+  availableDates: number[];
   dogFriendly: boolean;
   comments: string;
   amenities: string;
