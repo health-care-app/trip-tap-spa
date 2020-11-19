@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, switchMap, take, tap } from 'rxjs/operators';
 
-import { Profile } from '@Auth/models/profile.model';
-import { AuthFacade } from '@Auth/store/auth.facade';
-import { UserTypes } from '@Enums/user-types.enum';
+import { ModuleRoutes, TripsRoutes } from '@Enums/routes.enum';
 
 import { Trip } from '../../models/trip.model';
 import { TripsFacade } from '../../store/trips.facade';
@@ -15,34 +13,16 @@ import { TripsFacade } from '../../store/trips.facade';
   styleUrls: ['./trips-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TripsListComponent implements OnInit {
-  public tripList: Trip[] = [];
+export class TripsListComponent {
+  public tripList$: Observable<Trip[]> = this.tripsFacade.tripsList$;
 
   public constructor(
-    private readonly authFacade: AuthFacade,
+    private readonly router: Router,
     private readonly tripsFacade: TripsFacade,
   ) {
   }
 
-  public ngOnInit(): void {
-    this.authFacade.profile$
-      .pipe(
-        filter((profile: Profile): boolean => !!profile),
-        take(1),
-        tap((profile: Profile): void => {
-          switch (profile.userType) {
-            case UserTypes.tripOrganizer:
-              this.tripsFacade.getTripsList();
-              break;
-            case UserTypes.customer:
-            default:
-              this.tripsFacade.getTripsList(true);
-          }
-        }),
-        switchMap((): Observable<Trip[]> => this.tripsFacade.tripsList$),
-      )
-      .subscribe((trips: Trip[]): void => {
-        this.tripList = trips;
-      });
+  public createTrip(): void {
+    this.router.navigate([ModuleRoutes.Trips, TripsRoutes.Create]);
   }
 }

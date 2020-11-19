@@ -13,6 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SliderModule } from 'primeng/slider';
+import { TabViewModule } from 'primeng/tabview';
 
 import { ModuleRoutes } from '@Enums/routes.enum';
 import { FieldModule } from '@Form/modules/field.module';
@@ -22,6 +23,8 @@ import { ComponentsType, ModulesType } from '@Types/module.types';
 import { TripsCreateComponent } from './components/trips-create/trips-create.component';
 import { TripsListComponent } from './components/trips-list/trips-list.component';
 import { TripsViewComponent } from './components/trips-view/trips-view.component';
+import { TripDetailsResolver } from './shared/trip-details.resolver';
+import { TripsListResolver } from './shared/trips-list.resolver';
 import { TripsRepository } from './shared/trips.repository';
 import { TripsEffects } from './store/trips.effects';
 import { TripsFacade } from './store/trips.facade';
@@ -36,6 +39,7 @@ const component: ComponentsType = [
 
 const primengModules: ModulesType = [
   SliderModule,
+  TabViewModule,
   CalendarModule,
   CheckboxModule,
   DropdownModule,
@@ -61,6 +65,8 @@ const modules: ModulesType = [
 const services: Provider[] = [
   TripsFacade,
   TripsRepository,
+  TripsListResolver,
+  TripDetailsResolver,
 ];
 
 @NgModule({

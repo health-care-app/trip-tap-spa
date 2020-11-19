@@ -11,7 +11,7 @@ import { tripsSelectors } from './trips.selectors';
 
 @Injectable()
 export class TripsFacade {
-  public trips$: Observable<Trip> = this.store.pipe(select(tripsSelectors.selectTrip));
+  public trip$: Observable<Trip> = this.store.pipe(select(tripsSelectors.selectTrip));
   public tripsList$: Observable<Trip[]> = this.store.pipe(select(tripsSelectors.selectTripsList));
   public tripsPending$: Observable<boolean> = this.store.pipe(select(tripsSelectors.selectTripsPending));
 
