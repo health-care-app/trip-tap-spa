@@ -1,0 +1,183 @@
+<div class="trip-view">
+  <div
+    *ngIf="trip"
+    class="trip-view__trip"
+  >
+    <img
+      class="trip-view__trip_image"
+      [src]="trip.image"
+      [alt]="'TRIP.LOGO' | translate"
+    />
+
+    <label class="trip-view__trip_name">
+      {{ trip.name }}
+    </label>
+
+    <div class="trip-view__trip_location">
+      <i class="pi pi-map-marker"></i>
+
+      <label class="trip-view__trip_location_name">
+        {{ trip.location }}
+      </label>
+    </div>
+
+    <div class="trip-view__trip_organizer">
+      <i class="pi pi-user"></i>
+
+      <label class="trip-view__trip_organizer_name">
+        {{ trip.user.firstName }} {{ trip.user.lastName }}
+      </label>
+    </div>
+
+    <div class="trip-view__trip_tags">
+      <span
+        class="trip-view__trip_tag"
+        *ngFor="let tag of trip.tags"
+      >
+        #{{ tag }}
+      </span>
+    </div>
+
+    <div class="trip-view__trip_general-info">
+      <div class="trip-view__trip_price">
+        <label class="trip-view__trip_price_label">
+          {{ 'TRIP.VIEW.PRICE' | translate }}
+        </label>
+
+        <label class="trip-view__trip_price_value">
+          {{ trip.price }}{{ trip.currency }} {{ trip.including }}
+        </label>
+      </div>
+
+      <div class="trip-view__trip_available-dates">
+        <label class="trip-view__trip_available-dates_label">
+          {{ 'TRIP.VIEW.DAYS_AVAILABLE' | translate }}
+        </label>
+
+        <label class="trip-view__trip_available-dates_value">
+          {{ trip.availableDates.join(', ') }}
+        </label>
+      </div>
+
+      <div class="trip-view__trip_moving-time">
+        <label class="trip-view__trip_moving-time_label">
+          {{ 'TRIP.VIEW.MOVING_TIME' | translate }}
+        </label>
+
+        <label class="trip-view__trip_moving-time_value">
+          {{ trip.startTime }}
+        </label>
+      </div>
+
+      <div class="trip-view__trip_duration">
+        <label class="trip-view__trip_duration_label">
+          {{ 'TRIP.VIEW.DURATION' | translate }}
+        </label>
+
+        <label class="trip-view__trip_duration_value">
+          {{ trip.duration }}
+        </label>
+      </div>
+
+      <div class="trip-view__trip_level">
+        <label class="trip-view__trip_level_label">
+          {{ 'TRIP.VIEW.LEVEL' | translate }}
+        </label>
+
+        <label class="trip-view__trip_level_value">
+          {{ 'TRIP.VIEW.LEVEL_VALUE' | translate: { level: ('TRIP.LEVELS.' + (trip.level | uppercase)) | translate } }}
+        </label>
+      </div>
+
+      <div class="trip-view__trip_dog-friendly">
+        <label class="trip-view__trip_dog-friendly_label">
+          {{ 'TRIP.VIEW.DOG_FRIENDLY' | translate }}
+        </label>
+
+        <label class="trip-view__trip_dog-friendly_value">
+          {{ ('APP.' + (trip.dogFriendly ? 'YES' : 'NO')) | translate }}
+        </label>
+      </div>
+    </div>
+
+    <label class="trip-view__trip_comments">
+      {{ trip.comments }}
+    </label>
+
+    <div class="trip-view__trip_contact">
+      <label class="trip-view__trip_contact_label">
+        {{ 'TRIP.VIEW.CONTACT_ORGANIZER' | translate: { organizer: trip.user.firstName } }}
+      </label>
+
+      <div class="trip-view__trip_contact_links">
+        <a
+          *ngIf="trip.user.instagramId"
+          class="trip-view__trip_contact_link"
+          href="https://www.instagram.com/{{ trip.user.instagramId }}"
+          target="_blank"
+        >
+          <img
+            class="trip-view__trip_contact_image"
+            src="assets/images/instagram.svg"
+            [alt]="'APP.INSTAGRAM_LOGO' | translate"
+          />
+        </a>
+
+        <a
+          *ngIf="trip.user.phoneNumber"
+          class="trip-view__trip_contact_link"
+          href="tel:{{ trip.user.phoneNumber }}"
+        >
+          <img
+            class="trip-view__trip_contact_image"
+            src="assets/images/phone.svg"
+            [alt]="'APP.PHONE_LOGO' | translate"
+          />
+        </a>
+
+        <a
+          *ngIf="trip.user.facebookId"
+          class="trip-view__trip_contact_link"
+          href="https://www.facebook.com/{{ trip.user.facebookId }}"
+          target="_blank"
+        >
+          <img
+            class="trip-view__trip_contact_image"
+            src="assets/images/facebook.svg"
+            [alt]="'APP.FACEBOOK_LOGO' | translate"
+          />
+        </a>
+      </div>
+    </div>
+
+    <p-tabView
+      class="trip-view__trip_tab"
+      styleClass="trip-tab"
+      *ngIf="trip.description || trip.amenities || trip.material"
+    >
+      <p-tabPanel
+        *ngIf="trip.description"
+        class="trip-view__trip_description"
+        [header]="'TRIP.VIEW.DESCRIPTION' | translate"
+      >
+        {{ trip.description }}
+      </p-tabPanel>
+
+      <p-tabPanel
+        *ngIf="trip.amenities"
+        class="trip-view__trip_amenities"
+        [header]="'TRIP.VIEW.AMENITIES' | translate"
+      >
+        {{ trip.amenities }}
+      </p-tabPanel>
+
+      <p-tabPanel
+        *ngIf="trip.material"
+        class="trip-view__trip_material"
+        [header]="'TRIP.VIEW.MATERIAL' | translate"
+      >
+        {{ trip.material }}
+      </p-tabPanel>
+  </p-tabView>
+  </div>
+</div>

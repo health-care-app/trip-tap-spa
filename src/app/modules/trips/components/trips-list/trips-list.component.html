@@ -1,11 +1,20 @@
 <div class="trips-list">
-  <label class="trips-list__label">
-    {{ 'TRIP.SUGGESTED_TRIPS' | translate }}
-  </label>
+  <div class="trips-list__header">
+    <label class="trips-list__label">
+      {{ 'TRIP.SUGGESTED_TRIPS' | translate }}
+    </label>
+
+    <p-button
+      class="trips-list__create-trip"
+      styleClass="primary create-new-trip"
+      [label]="'TRIP.CREATE_TRIP' | translate"
+      (onClick)="createTrip()"
+    ></p-button>
+  </div>
 
   <div
     class="trips-list__trip"
-    *ngFor="let trip of tripList"
+    *ngFor="let trip of (tripList$ | async)"
   >
     <img
       class="trips-list__trip_image"
@@ -19,7 +28,7 @@
       </label>
 
       <label class="trips-list__trip_organizer">
-        {{ trip.user.name }}
+        {{ trip.user.firstName }} {{ trip.user.lastName }}
       </label>
 
       <div class="trips-list__trip_tags">

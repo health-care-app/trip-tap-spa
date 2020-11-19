@@ -1,0 +1,142 @@
+@import '_variables';
+
+:host {
+  display: block;
+  background-image: url('assets/images/default-bg.png');
+  background-size: cover;
+  height: 100vh;
+  overflow-y: scroll;
+
+  .trip-view {
+    margin: 0 auto 50px;
+    padding-top: 75px;
+    width: 75%;
+
+    &__trip {
+      &_image {
+        margin-bottom: 8px;
+        border-radius: 45px;
+        width: 100%;
+
+        &::after { // sass-lint:disable-line nesting-depth
+          display: block;
+          padding-bottom: 100%;
+          content: '';
+        }
+      }
+
+      &_name {
+        display: block;
+        margin-bottom: 8px;
+        color: map-get($colors, trip-white);
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      &_location,
+      &_organizer {
+        display: flex;
+        margin-bottom: 8px;
+
+        .pi {
+          margin-right: 8px;
+          color: map-get($colors, trip-white);
+          font-size: 28px;
+        }
+
+        &_name {
+          margin-top: 6px;
+          color: map-get($colors, trip-white);
+          font-size: 14px;
+        }
+      }
+
+      &_tags {
+        margin-bottom: 8px;
+      }
+
+      &_tag {
+        display: inline-block;
+        border-radius: 16px;
+        background-color: map-get($colors, primary);
+        padding: 0 8px;
+        height: 16px;
+        text-transform: lowercase;
+        color: map-get($colors, trip-white);
+        font-size: 10px;
+
+        &:not(:last-child) {
+          margin-right: 4px;
+        }
+      }
+
+      &_general-info {
+        margin-bottom: 16px;
+      }
+
+      &_price,
+      &_available-dates,
+      &_moving-time,
+      &_duration,
+      &_level,
+      &_dog-friendly {
+        display: flex;
+        color: map-get($colors, trip-white);
+        font-size: 14px;
+
+        &:not(:last-child) {
+          margin-bottom: 6px;
+        }
+
+        &_label {
+          display: inline-flex;
+          position: relative;
+          align-items: flex-start;
+          width: 50%;
+        }
+
+        &_value {
+          display: inline-block;
+          width: 50%;
+        }
+      }
+
+      &_comments {
+        display: block;
+        margin-bottom: 28px;
+        color: map-get($colors, trip-white);
+        font-size: 14px;
+      }
+
+      &_contact {
+        margin: 0 auto 16px;
+        width: fit-content;
+
+        &_label {
+          display: block;
+          margin-bottom: 8px;
+          color: map-get($colors, trip-white);
+          font-size: 14px;
+        }
+
+        &_links {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        &_link {
+          width: 32px;
+          height: 32px;
+
+          &:not(:last-child) {
+            margin-right: 8px;
+          }
+        }
+
+        &_image {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { finalize, map, switchMap } from 'rxjs/operators';
+import { finalize, map, mapTo, switchMap, take, tap } from 'rxjs/operators';
 
-import { CreateTripProps, GetTripProps, GetTripsListProps } from '../models/action-props.model';
+import { ModuleRoutes } from '@Enums/routes.enum';
+
+import { CreateTripProps, GetTripProps, GetTripsListProps, TripProps } from '../models/action-props.model';
 import { Trip } from '../models/trip.model';
 import { TripsRepository } from '../shared/trips.repository';
 import { CreateTripSuccessActionType, GetTripsListSuccessActionType, GetTripSuccessActionType } from '../types/action.types';
@@ -18,9 +21,8 @@ export class TripsEffects {
         .pipe(
           ofType(TripsActionsTypes.GetTripsList),
           switchMap((action: GetTripsListProps): Observable<Trip[]> => this.tripsRepository.getTripsList(action.active)),
-          finalize((): void => {
-            this.tripsFacade.setPendingState(false);
-          }),
+          take(1),
+          finalize(this.setPendingToFalse.bind(this)),
           map((trips: Trip[]): GetTripsListSuccessActionType => getAllTripsSuccess({trips})),
         )
     ),
@@ -32,9 +34,8 @@ export class TripsEffects {
         .pipe(
           ofType(TripsActionsTypes.GetTrip),
           switchMap((action: GetTripProps): Observable<Trip> => this.tripsRepository.getTrip(action.tripId)),
-          finalize((): void => {
-            this.tripsFacade.setPendingState(false);
-          }),
+          take(1),
+          finalize(this.setPendingToFalse.bind(this)),
           map((trip: Trip): GetTripSuccessActionType => getTripSuccess({trip})),
         )
     ),
@@ -46,18 +47,39 @@ export class TripsEffects {
         .pipe(
           ofType(TripsActionsTypes.CreateTrip),
           switchMap((action: CreateTripProps): Observable<Trip> => this.tripsRepository.createTrip(action.trip)),
-          finalize((): void => {
-            this.tripsFacade.setPendingState(false);
-          }),
+          take(1),
+          finalize(this.setPendingToFalse.bind(this)),
           map((trip: Trip): CreateTripSuccessActionType => createTripSuccess({trip})),
         )
     ),
   );
 
+  public createTripSuccess$: CreateEffectMetadata = createEffect(
+    (): Observable<void> => (
+      this.actions$
+        .pipe(
+          ofType(TripsActionsTypes.CreateTripSuccess),
+          map((action: TripProps): number => action.trip.id),
+          tap(this.navigateToTrip.bind(this)),
+          mapTo(null),
+        )
+    ),
+    { dispatch: false },
+  );
+
   public constructor(
+    private readonly router: Router,
     private readonly actions$: Actions,
     private readonly tripsFacade: TripsFacade,
     private readonly tripsRepository: TripsRepository,
   ) {
+  }
+
+  private setPendingToFalse(): void {
+    this.tripsFacade.setPendingState(false);
+  }
+
+  private navigateToTrip(tripId: number): void {
+    this.router.navigate([ModuleRoutes.Trips, tripId]);
   }
 }

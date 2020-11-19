@@ -2,11 +2,25 @@
   "TRIP": {
     "LOGO": "Trip Logo",
     "ADD_TRIP": "Add Trip",
+    "CREATE_TRIP": "Create Trip",
     "TAG": "Tag",
     "TAGS": "Tags",
     "DONE": "Done",
     "MORE_INFO": "More Info",
     "SUGGESTED_TRIPS": "Suggested trips",
+    "VIEW": {
+      "PRICE": "Price",
+      "DAYS_AVAILABLE": "Days available",
+      "MOVING_TIME": "Moving time",
+      "DURATION": "Duration",
+      "LEVEL": "Level",
+      "LEVEL_VALUE": "{{ level }} level",
+      "DOG_FRIENDLY": "Dog friendly",
+      "CONTACT_ORGANIZER": "Contact {{ organizer }}",
+      "DESCRIPTION": "Description",
+      "AMENITIES": "Amenities",
+      "MATERIAL": "Material"
+    },
     "FIELDS": {
       "NAME": "Name",
       "LOCATION": "Location",

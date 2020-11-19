@@ -1,0 +1,49 @@
+.ui-tabview {
+  &.trip-tab {
+    padding: 0;
+
+    .ui-tabview-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px !important; // sass-lint:disable-line no-important
+
+      &::after,
+      &::before {
+        display: none;
+        content: initial;
+      }
+
+      .ui-state-default {
+        margin: 0;
+        border-width: 0 0 1px !important; // sass-lint:disable-line no-important
+        border-color: map-get($colors, trip-white) !important; // sass-lint:disable-line no-important
+        box-shadow: none !important; // sass-lint:disable-line no-important
+        background-color: rgba(map-get($colors, trip-black), 0) !important; // sass-lint:disable-line no-important
+        padding: 0;
+        height: 24px;
+        color: map-get($colors, trip-white);
+
+        &.ui-state-active { // sass-lint:disable-line nesting-depth
+          border-color: map-get($colors, primary) !important; // sass-lint:disable-line no-important
+          color: map-get($colors, primary) !important; // sass-lint:disable-line no-important
+        }
+
+        a { // sass-lint:disable-line nesting-depth
+          padding: 0;
+          color: inherit !important; // sass-lint:disable-line no-important
+        }
+
+        .ui-tabview-title { // sass-lint:disable-line nesting-depth
+          color: inherit;
+        }
+      }
+    }
+
+    .ui-tabview-panels {
+      border: 0;
+      background-color: rgba(map-get($colors, trip-black), 0);
+      padding: 0;
+      color: map-get($colors, trip-white);
+    }
+  }
+}
